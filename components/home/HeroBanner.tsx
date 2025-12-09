@@ -27,9 +27,6 @@ export default function HeroBanner({
       {/* Content */}
       <div className="relative h-full container mx-auto px-6 flex flex-col justify-center items-start">
         <div className="max-w-3xl animate-fade-in-up">
-          <span className="inline-block px-4 py-1.5 bg-primary/90 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full mb-6 backdrop-blur-sm shadow-lg">
-            New Collection
-          </span>
           <h1 className="text-white font-extrabold text-[48px] sm:text-[64px] md:text-[80px] leading-[1.1] mb-6 drop-shadow-md">
             {title}
           </h1>
