@@ -43,41 +43,43 @@ export default function SubscribeForm({ onSubmit }: SubscribeFormProps) {
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-dark">
-      <div className="container mx-auto px-4 max-w-2xl text-center">
-        <h2 className="font-bold text-[32px] leading-tight text-white mb-4">
-          Subscribe Now
-        </h2>
-        <p className="text-[14px] leading-relaxed text-white mb-8">
-          Get E-mail updates about our latest shop and special offers
-        </p>
+    <section className="py-20 bg-gray-900 border-t border-gray-800">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+            Stay in the Loop
+          </h2>
+          <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+            Subscribe to our newsletter and get exclusive access to new product launches, special offers, and shopping tips.
+          </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <div className="flex-1">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full px-4 py-3 bg-white text-dark text-[14px] focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-              aria-label="Email address"
-              aria-invalid={error ? 'true' : 'false'}
-              aria-describedby={error ? 'email-error' : undefined}
-            />
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative">
+            <div className="flex-1 w-full">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="w-full px-6 py-4 rounded-full bg-white/10 text-white text-[15px] border border-white/20 focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder:text-gray-500 shadow-inner"
+                aria-label="Email address"
+                aria-invalid={error ? 'true' : 'false'}
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="px-10 py-4 bg-primary text-white text-[15px] font-bold uppercase tracking-wider rounded-full hover:bg-white hover:text-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            >
+              {isSubmitting ? '...' : 'Subscribe'}
+            </button>
+
             {error && (
-              <p id="email-error" className="text-red-500 text-[12px] mt-1 text-left">
+              <p className="absolute -bottom-8 left-6 text-red-500 text-xs">
                 {error}
               </p>
             )}
-          </div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-primary hover:bg-secondary text-white text-[14px] font-semibold uppercase tracking-wide px-8 py-3 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
-          </button>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );

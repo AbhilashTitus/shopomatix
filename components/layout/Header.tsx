@@ -14,7 +14,7 @@ const navigationItems: NavItem[] = [
   { label: 'Contact', href: '/contact' },
 ];
 
-export default function Header({}: HeaderProps) {
+export default function Header({ }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -22,39 +22,40 @@ export default function Header({}: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
+      <div className="container mx-auto px-6">
+        <div className="relative flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0 z-20 hover:opacity-90 transition-opacity">
             <Image
               src="/assets/shopomatix-logo-new-dWxLo2qMG0u6996g.avif"
               alt="Shopomatix Logo"
-              width={150}
-              height={40}
+              width={180}
+              height={48}
               priority
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden lg:flex items-center space-x-10 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[14px] text-dark hover:text-primary hover:font-bold hover:underline hover:decoration-primary hover:underline-offset-4 transition-all"
+                className="text-[15px] font-medium text-gray-700 hover:text-primary transition-colors duration-300 relative group tracking-wide"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6 z-20">
             {/* Cart Icon */}
             <button
-              className="p-2 hover:text-primary transition-colors"
+              className="p-2 text-gray-700 hover:text-primary transition-colors relative group"
               aria-label="Shopping Cart"
             >
               <svg
@@ -63,7 +64,7 @@ export default function Header({}: HeaderProps) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 group-hover:scale-110 transition-transform duration-300"
               >
                 <path
                   strokeLinecap="round"
@@ -76,14 +77,14 @@ export default function Header({}: HeaderProps) {
             {/* Seller Onboarding Button */}
             <Link
               href="/seller-onboarding"
-              className="hidden md:inline-block px-4 py-2 bg-primary text-white text-[14px] font-semibold uppercase tracking-wide rounded hover:bg-secondary transition-colors"
+              className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-full hover:bg-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 shadow-md"
             >
               Become a Seller
             </Link>
 
             {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden p-2 hover:text-primary transition-colors"
+              className="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors"
               onClick={toggleMobileMenu}
               aria-label="Toggle Menu"
               aria-expanded={isMobileMenuOpen}
@@ -95,7 +96,7 @@ export default function Header({}: HeaderProps) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -110,7 +111,7 @@ export default function Header({}: HeaderProps) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -124,29 +125,32 @@ export default function Header({}: HeaderProps) {
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-3">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-[14px] text-dark hover:text-primary hover:font-bold py-2 transition-all"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-4 border-t border-gray-100' : 'max-h-0 opacity-0'
+            }`}
+        >
+          <nav className="flex flex-col space-y-2">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[15px] text-gray-700 hover:text-primary hover:bg-gray-50 hover:pl-2 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-2">
               <Link
                 href="/seller-onboarding"
-                className="md:hidden inline-block px-4 py-2 bg-primary text-white text-[14px] font-semibold uppercase tracking-wide rounded hover:bg-secondary transition-colors text-center"
+                className="flex w-full items-center justify-center px-4 py-3 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-lg hover:bg-secondary transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Become a Seller
               </Link>
             </div>
           </nav>
-        )}
+        </div>
       </div>
     </header>
   );
