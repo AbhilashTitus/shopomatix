@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #FF6B6B;
+    --secondary: #FF5252;
+    --dark: #2D3436;
+    --base: #111111;
+  }
+
+  body {
+    @apply bg-white text-dark antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Remove default button styles */
+  button {
+    @apply cursor-pointer;
+  }
+
+  /* Ensure images are responsive by default */
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+@layer components {
+  /* Primary button styles */
+  .btn-primary {
+    @apply bg-primary text-white font-semibold uppercase tracking-wide px-6 py-3 rounded-full transition-colors duration-200 hover:bg-secondary;
+  }
+
+  /* Secondary button styles */
+  .btn-secondary {
+    @apply bg-secondary text-white font-semibold uppercase tracking-wide px-6 py-3 rounded-full transition-colors duration-200 hover:bg-primary;
+  }
+
+  /* Category label styles */
+  .category-label {
+    @apply bg-secondary text-white px-4 py-1 rounded-full text-sm font-medium;
+  }
+
+  /* Product tag styles */
+  .product-tag {
+    @apply bg-black text-white text-[10px] px-2 py-1 rounded-sm uppercase font-medium;
+  }
+}
+
+@layer utilities {
+  /* Custom text sizes */
+  .text-body {
+    @apply text-[14px] leading-relaxed text-gray-600;
+  }
+
+  .text-heading {
+    @apply font-bold text-[32px] leading-tight;
+  }
+
+  .text-subheading {
+    @apply font-semibold text-[18px];
+  }
+
+  /* Transition utilities for smooth hover effects */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .transition-colors-smooth {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+
+  .transition-transform-smooth {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+}
