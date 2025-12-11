@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 
@@ -11,8 +13,10 @@ export default function CartPage() {
 
     if (items.length === 0) {
         return (
-            <div className="min-h-screen bg-gray-50 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto">
+            <>
+                <Header />
+                <div className="min-h-screen bg-gray-50 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-7xl mx-auto">
                     <div className="bg-white rounded-xl shadow-sm p-12 text-center">
                         <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-gray-400">
@@ -29,14 +33,18 @@ export default function CartPage() {
                         </Link>
                     </div>
                 </div>
-            </div>
+                </div>
+                <Footer />
+            </>
         );
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-12 pb-24 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
+        <>
+            <Header />
+            <div className="min-h-screen bg-gray-50 pt-12 pb-24 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto">
+                    <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
 
                 <div className="lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start">
                     {/* Cart Items */}
@@ -46,12 +54,13 @@ export default function CartPage() {
                                 {items.map((item) => (
                                     <li key={item.id} className="p-6 sm:flex sm:items-center">
                                         {/* Image */}
-                                        <div className="flex-shrink-0 relative w-24 h-24 sm:w-32 sm:h-32 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                                        <div className="flex-shrink-0 relative w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center">
                                             <Image
                                                 src={item.image}
                                                 alt={item.name}
                                                 fill
-                                                className="object-cover object-center"
+                                                className="object-contain p-2"
+                                                sizes="(max-width: 640px) 96px, 128px"
                                             />
                                         </div>
 
@@ -158,6 +167,8 @@ export default function CartPage() {
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+            <Footer />
+        </>
     );
 }

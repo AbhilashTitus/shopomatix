@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { useAuth } from '@/context/AuthContext';
 
 export default function SignupPage() {
@@ -55,17 +57,10 @@ export default function SignupPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-            {/* Back to Home Button */}
-            <div className="absolute top-4 left-4 z-20">
-                <Link href="/" className="inline-flex items-center text-gray-600 hover:text-primary transition-colors font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Back to Home
-                </Link>
-            </div>
-            {/* Background decoration */}
+        <>
+            <Header />
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+                {/* Background decoration */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
                 <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
                 <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
@@ -214,6 +209,8 @@ export default function SignupPage() {
                     </div>
                 </form>
             </div>
-        </div>
+            </div>
+            <Footer />
+        </>
     );
 }

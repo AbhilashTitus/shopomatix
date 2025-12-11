@@ -2,18 +2,65 @@
 
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
-import { products } from '@/data/products';
+import { products as staticProducts } from '@/data/products';
 import { useCart } from '@/context/CartContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Product } from '@/components/types';
 
 export default function ProductDetailPage() {
     const params = useParams();
     const { addToCart } = useCart();
     const [qty, setQty] = useState(1);
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
 
-    // Find product by slug logic since links are /product/[slug]
     const productSlug = params.id as string;
-    const product = products.find(p => p.link.endsWith(`/${productSlug}`));
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                setLoading(true);
+                
+                // First try to fetch from API
+                const response = await fetch('/api/products', {
+                    cache: 'no-store',
+                });
+                
+                let products = staticProducts; // fallback
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    products = data.products || staticProducts;
+                }
+                
+                // Find product by slug or ID
+                const foundProduct = products.find(p => 
+                    p.link.endsWith(`/${productSlug}`) || p.id === productSlug
+                );
+                
+                setProduct(foundProduct || null);
+            } catch (error) {
+                console.error('Error fetching product:', error);
+                // Fallback to static products
+                const foundProduct = staticProducts.find(p => 
+                    p.link.endsWith(`/${productSlug}`) || p.id === productSlug
+                );
+                setProduct(foundProduct || null);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProduct();
+    }, [productSlug]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+        );
+    }
 
     if (!product) {
         return notFound();
@@ -28,12 +75,13 @@ export default function ProductDetailPage() {
             <div className="max-w-7xl mx-auto align-middle">
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden lg:flex">
                     {/* Image Section */}
-                    <div className="lg:w-1/2 bg-gray-100 relative min-h-[400px] lg:min-h-[600px]">
+                    <div className="lg:w-1/2 bg-white relative min-h-[400px] lg:min-h-[600px] flex items-center justify-center">
                         <Image
                             src={product.image}
                             alt={product.name}
                             fill
                             className="object-contain p-8"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                     </div>
 

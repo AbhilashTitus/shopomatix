@@ -1,17 +1,46 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { notFound, useParams } from 'next/navigation';
-import { products, categories } from '@/data/products';
+import { products as staticProducts, categories } from '@/data/products';
+import { Product } from '@/components/types';
 import ProductGrid from '@/components/home/ProductGrid';
 
 export default function CategoryPage() {
     const params = useParams();
     const slug = params.slug as string;
+    const [products, setProducts] = useState<Product[]>(staticProducts);
+    const [loading, setLoading] = useState(true);
 
     // Find category meta
     const category = categories.find(c => c.slug === slug || c.link.endsWith(`/${slug}`));
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch('/api/products', {
+                    cache: 'no-store',
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    setProducts(data.products || staticProducts);
+                } else {
+                    setProducts(staticProducts);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                setProducts(staticProducts);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     if (!category) {
         return notFound();
@@ -38,7 +67,11 @@ export default function CategoryPage() {
                         )}
                     </div>
 
-                    {categoryProducts.length > 0 ? (
+                    {loading ? (
+                        <div className="flex items-center justify-center py-12">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                        </div>
+                    ) : categoryProducts.length > 0 ? (
                         <ProductGrid products={categoryProducts} />
                     ) : (
                         <div className="text-center py-20">
