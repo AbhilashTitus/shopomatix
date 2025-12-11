@@ -3,7 +3,6 @@
 import { useState, FormEvent } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Image from 'next/image';
 
 interface ContactFormData {
   name: string;
