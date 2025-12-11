@@ -1,0 +1,128 @@
+{
+  "products": [
+    {
+      "id": "e1",
+      "name": "boAt Airdopes 141 Bluetooth Earbuds",
+      "price": 1299,
+      "originalPrice": 4490,
+      "discountPercentage": 71,
+      "image": "/uploads/1765433882756_ouo7nrlpn.jpg",
+      "link": "/product/boat-airdopes-141",
+      "category": "electronics",
+      "description": "True Wireless Earbuds with 42H Playtime, Beast Mode, ENx Tech, ASAP Charge, IWP, IPX4 Water Resistance.",
+      "rating": 4.2,
+      "reviewCount": 15400,
+      "seller": "Sharma Electronics",
+      "inStock": true,
+      "tags": [
+        {
+          "label": "BEST SELLER",
+          "type": "best-seller"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "name": "Samsung 4K UHD Smart LED TV 43 inch",
+      "price": 29990,
+      "originalPrice": 47900,
+      "discountPercentage": 37,
+      "image": "/uploads/1765434402941_wx8aclx3kne.webp",
+      "link": "/product/samsung-4k-tv-43",
+      "category": "electronics",
+      "description": "Crystal 4K Series Ultra HD Smart LED TV with HDR 10+, PurColor, and Symphony Sound.",
+      "rating": 4.5,
+      "reviewCount": 3200,
+      "seller": "Cloudtail India",
+      "inStock": true,
+      "tags": []
+    },
+    {
+      "id": "e3",
+      "name": "Redmi Note 13 Pro 5G",
+      "price": 24999,
+      "originalPrice": 28999,
+      "discountPercentage": 14,
+      "image": "/uploads/1765436360772_88j8xwg9h4l.png",
+      "link": "/product/redmi-note-13-pro",
+      "category": "electronics",
+      "description": "200MP Camera, 67W Turbo Charge, 120Hz AMOLED Display, Snapdragon 7s Gen 2.",
+      "rating": 4.3,
+      "reviewCount": 8900,
+      "seller": "Mobile Junction",
+      "inStock": true,
+      "tags": [
+        {
+          "label": "NEW ARRIVAL",
+          "type": "new-arrival"
+        }
+      ]
+    },
+    {
+      "id": "f1",
+      "name": "Men's Cotton Kurta Set",
+      "price": 899,
+      "originalPrice": 2499,
+      "discountPercentage": 64,
+      "image": "/uploads/1765436424813_vjllbuvuadi.png",
+      "link": "/product/mens-kurta-set",
+      "category": "fashion",
+      "description": "100% Cotton Printed Kurta with Pyjama, ideal for festivals and casual wear.",
+      "rating": 4,
+      "reviewCount": 560,
+      "seller": "Trendy Fashions",
+      "inStock": true,
+      "tags": []
+    },
+    {
+      "id": "hk1",
+      "name": "Prestige Non-Stick Fry Pan",
+      "price": 750,
+      "originalPrice": 1100,
+      "discountPercentage": 32,
+      "image": "/uploads/1765436479968_gkbbgn1l3i6.png",
+      "link": "/product/prestige-fry-pan",
+      "category": "home-kitchen",
+      "description": "Omega Deluxe Granite Fry Pan, 240mm, Black.",
+      "rating": 4.3,
+      "reviewCount": 2100,
+      "seller": "Home Essentials",
+      "inStock": true,
+      "tags": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": "/assets/generated.avif",
+      "link": "/category/electronics",
+      "description": "Latest gadgets, mobiles, and electronic devices"
+    },
+    {
+      "id": "2",
+      "name": "Fashion & Apparel",
+      "slug": "fashion",
+      "image": "/assets/generated.avif",
+      "link": "/category/fashion",
+      "description": "Trendy clothing, footwear, and accessories"
+    },
+    {
+      "id": "3",
+      "name": "Home & Kitchen",
+      "slug": "home-kitchen",
+      "image": "/assets/generated.avif",
+      "link": "/category/home-kitchen",
+      "description": "Essentials for your home and kitchen"
+    },
+    {
+      "id": "4",
+      "name": "Mobile Accessories",
+      "slug": "mobile-accessories",
+      "image": "/assets/generated.avif",
+      "link": "/category/mobile-accessories",
+      "description": "Cases, Chargers, and more for your smartphone"
+    }
+  ]
+}

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export default function SellerRegistrationPage() {
     const [step, setStep] = useState(1);
@@ -63,39 +65,36 @@ export default function SellerRegistrationPage() {
 
     if (step === 5) {
         return (
-            <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 text-center">
-                <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6">
+            <>
+                <Header />
+                <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-12 h-12 text-green-600">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
+                    </div>
+                    <h2 className="text-3xl font-extrabold text-[#2D3436] mb-2">Registration Successful!</h2>
+                    <p className="text-lg text-gray-600 mb-8 max-w-lg">
+                        Your seller account is currently <span className="font-bold text-yellow-600">Under Review</span>.
+                        We will notify you via email once your details are verified.
+                    </p>
+                    <Link
+                        href="/"
+                        className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#FF6B6B] hover:bg-[#FF5252] transition-colors"
+                    >
+                        Return to Home
+                    </Link>
                 </div>
-                <h2 className="text-3xl font-extrabold text-[#2D3436] mb-2">Registration Successful!</h2>
-                <p className="text-lg text-gray-600 mb-8 max-w-lg">
-                    Your seller account is currently <span className="font-bold text-yellow-600">Under Review</span>.
-                    We will notify you via email once your details are verified.
-                </p>
-                <Link
-                    href="/"
-                    className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#FF6B6B] hover:bg-[#FF5252] transition-colors"
-                >
-                    Return to Home
-                </Link>
-            </div>
+                <Footer />
+            </>
         );
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative">
-            {/* Back to Home Button */}
-            <div className="absolute top-4 left-4 z-20">
-                <Link href="/" className="inline-flex items-center text-gray-600 hover:text-primary transition-colors font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Back to Home
-                </Link>
-            </div>
-            {/* Background decoration */}
+        <>
+            <Header />
+            <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative">
+                {/* Background decoration */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]" />
@@ -269,6 +268,8 @@ export default function SellerRegistrationPage() {
                     </form>
                 </div>
             </div>
-        </div>
+            </div>
+            <Footer />
+        </>
     );
 }

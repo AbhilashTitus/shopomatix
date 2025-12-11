@@ -33,7 +33,7 @@ export default function Header({ }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 z-20 hover:opacity-90 transition-opacity">
             <Image
-              src="/assets/shopomatix-logo-new-dWxLo2qMG0u6996g.avif"
+              src="/assets/shopomatix-logo-new.avif"
               alt="Shopomatix Logo"
               width={180}
               height={48}

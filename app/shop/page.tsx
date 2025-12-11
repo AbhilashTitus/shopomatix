@@ -2,10 +2,12 @@
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { products } from '@/data/products';
 import ProductGrid from '@/components/home/ProductGrid';
+import { useProducts } from '@/hooks/useProducts';
 
 export default function ShopPage() {
+    const { products, loading } = useProducts();
+
     return (
         <>
             <Header />
@@ -16,7 +18,13 @@ export default function ShopPage() {
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">Explore our wide range of products across all categories.</p>
                     </div>
 
-                    <ProductGrid products={products} />
+                    {loading ? (
+                        <div className="flex items-center justify-center py-12">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                        </div>
+                    ) : (
+                        <ProductGrid products={products} />
+                    )}
                 </div>
             </div>
             <Footer />

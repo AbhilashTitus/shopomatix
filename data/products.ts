@@ -237,3 +237,26 @@ export const products: Product[] = [
         inStock: true,
     },
 ];
+
+// API functions for frontend
+export const fetchProducts = async () => {
+  try {
+    const response = await fetch('/api/products');
+    const data = await response.json();
+    return data.products || [];
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return products; // Fallback to static data
+  }
+};
+
+export const fetchCategories = async () => {
+  try {
+    // For now, return static categories
+    // You can implement categories API later if needed
+    return categories;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return categories;
+  }
+};

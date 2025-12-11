@@ -1,12 +1,17 @@
+'use client';
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroBanner from '@/components/home/HeroBanner';
 import Categories from '@/components/home/Categories';
 import ProductGrid from '@/components/home/ProductGrid';
 import SubscribeForm from '@/components/ui/SubscribeForm';
-import { products, categories } from '@/data/products';
+import { categories } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts';
 
 export default function Home() {
+  const { products, loading } = useProducts();
+
   return (
     <>
       <Header />
@@ -28,7 +33,13 @@ export default function Home() {
           <h2 className="font-bold text-[32px] leading-tight text-dark mb-8 text-center">
             Featured Products
           </h2>
-          <ProductGrid products={products} />
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+          ) : (
+            <ProductGrid products={products} />
+          )}
         </section>
 
         {/* Newsletter Subscription Section */}

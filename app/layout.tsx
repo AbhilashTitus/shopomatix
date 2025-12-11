@@ -13,6 +13,16 @@ export const metadata: Metadata = {
   description: 'Shopomatix is a modern ecommerce marketplace offering Electronics, Fashion, and Home Appliances. Discover the best deals and latest products.',
   keywords: ['ecommerce', 'marketplace', 'electronics', 'fashion', 'home appliances', 'online shopping'],
   authors: [{ name: 'Shopomatix' }],
+  icons: {
+    icon: [
+      { url: '/assets/shopomatix-logo-new.avif', sizes: '32x32', type: 'image/avif' },
+      { url: '/assets/shopomatix-logo-new.avif', sizes: '16x16', type: 'image/avif' },
+    ],
+    shortcut: '/assets/shopomatix-logo-new.avif',
+    apple: [
+      { url: '/assets/shopomatix-logo-new.avif', sizes: '180x180', type: 'image/avif' },
+    ],
+  },
   openGraph: {
     title: 'Shopomatix - Your One-Stop Shopping Destination',
     description: 'Shopomatix is a modern ecommerce marketplace offering Electronics, Fashion, and Home Appliances. Discover the best deals and latest products.',
@@ -20,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'Shopomatix',
     images: [
       {
-        url: '/assets/shopomatix-logo.avif',
+        url: '/assets/shopomatix-logo-new.avif',
         width: 1200,
         height: 630,
         alt: 'Shopomatix Logo',
@@ -33,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Shopomatix - Your One-Stop Shopping Destination',
     description: 'Shopomatix is a modern ecommerce marketplace offering Electronics, Fashion, and Home Appliances.',
-    images: ['/assets/shopomatix-logo.avif'],
+    images: ['/assets/shopomatix-logo-new.avif'],
   },
   robots: {
     index: true,
@@ -55,6 +65,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#FF6B6B" />
+      </head>
       <body className={inter.className}>
         <Providers>
           {children}
