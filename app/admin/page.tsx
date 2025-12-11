@@ -22,12 +22,17 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('/api/products');
-        const data = await response.json();
+        const [productsResponse, categoriesResponse] = await Promise.all([
+          fetch('/api/products'),
+          fetch('/api/categories')
+        ]);
+        
+        const productsData = await productsResponse.json();
+        const categoriesData = await categoriesResponse.json();
         
         setStats({
-          totalProducts: data.products?.length || 0,
-          totalCategories: 4, // Static for now
+          totalProducts: productsData.products?.length || 0,
+          totalCategories: categoriesData.categories?.length || 0,
           totalOrders: 156, // Mock data
           totalRevenue: 45670, // Mock data
         });

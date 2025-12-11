@@ -341,7 +341,7 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-gray-50">
+        {/* <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -376,7 +376,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Business Hours & Address */}
         <section className="py-16 bg-white">
@@ -384,7 +384,7 @@ export default function ContactPage() {
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
               
               {/* Business Hours */}
-              <div className="bg-gray-50 rounded-2xl p-8">
+              {/* <div className="bg-gray-50 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-dark mb-6">Business Hours</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b border-gray-200">
@@ -409,7 +409,7 @@ export default function ContactPage() {
                     💡 For urgent queries outside business hours, use our WhatsApp support for faster response.
                   </p>
                 </div>
-              </div>
+              </div> */}
 
               {/* Corporate Address */}
               <div className="bg-gray-50 rounded-2xl p-8">

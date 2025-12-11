@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": "/uploads/1765439224764_b4rzbm25vu4.png",
+      "link": "/category/electronics",
+      "description": "Latest gadgets, mobiles, and electronic devices"
+    },
+    {
+      "id": "2",
+      "name": "Fashion & Apparel",
+      "slug": "fashion",
+      "image": "/assets/generated.avif",
+      "link": "/category/fashion",
+      "description": "Trendy clothing, footwear, and accessories"
+    },
+    {
+      "id": "3",
+      "name": "Home & Kitchen",
+      "slug": "home-kitchen",
+      "image": "/assets/generated.avif",
+      "link": "/category/home-kitchen",
+      "description": "Essentials for your home and kitchen"
+    },
+    {
+      "id": "4",
+      "name": "Mobile Accessories",
+      "slug": "mobile-accessories",
+      "image": "/assets/generated.avif",
+      "link": "/category/mobile-accessories",
+      "description": "Cases, Chargers, and more for your smartphone"
+    }
+  ]
+}

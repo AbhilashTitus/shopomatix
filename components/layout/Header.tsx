@@ -7,7 +7,7 @@ import { HeaderProps, NavItem } from '@/components/types';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 
-const navigationItems: NavItem[] = [
+const allNavigationItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Shop', href: '/shop' },
   { label: 'Mobile Accessories', href: '/category/mobile-accessories' },
@@ -15,6 +15,11 @@ const navigationItems: NavItem[] = [
   { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
+
+// Filter out specified navigation items as per requirements 2.1, 2.2, 2.3
+const navigationItems: NavItem[] = allNavigationItems.filter(
+  item => item.label !== 'Mobile Accessories' && item.label !== 'Home Appliance'
+);
 
 export default function Header({ }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

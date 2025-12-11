@@ -4,43 +4,69 @@ import { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { notFound, useParams } from 'next/navigation';
-import { products as staticProducts, categories } from '@/data/products';
-import { Product } from '@/components/types';
+import { products as staticProducts } from '@/data/products';
+import { Product, Category } from '@/components/types';
 import ProductGrid from '@/components/home/ProductGrid';
 
 export default function CategoryPage() {
     const params = useParams();
     const slug = params.slug as string;
     const [products, setProducts] = useState<Product[]>(staticProducts);
+    const [category, setCategory] = useState<Category | null>(null);
     const [loading, setLoading] = useState(true);
-
-    // Find category meta
-    const category = categories.find(c => c.slug === slug || c.link.endsWith(`/${slug}`));
+    const [categoriesLoading, setCategoriesLoading] = useState(true);
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('/api/products', {
-                    cache: 'no-store',
-                });
+                setCategoriesLoading(true);
                 
-                if (response.ok) {
-                    const data = await response.json();
-                    setProducts(data.products || staticProducts);
+                const [productsResponse, categoriesResponse] = await Promise.all([
+                    fetch('/api/products', { cache: 'no-store' }),
+                    fetch('/api/categories', { cache: 'no-store' })
+                ]);
+                
+                if (productsResponse.ok) {
+                    const productsData = await productsResponse.json();
+                    setProducts(productsData.products || staticProducts);
                 } else {
                     setProducts(staticProducts);
                 }
+
+                if (categoriesResponse.ok) {
+                    const categoriesData = await categoriesResponse.json();
+                    const foundCategory = categoriesData.categories?.find((c: Category) => 
+                        c.slug === slug || c.link.endsWith(`/${slug}`)
+                    );
+                    setCategory(foundCategory || null);
+                } else {
+                    setCategory(null);
+                }
             } catch (error) {
-                console.error('Error fetching products:', error);
+                console.error('Error fetching data:', error);
                 setProducts(staticProducts);
+                setCategory(null);
             } finally {
                 setLoading(false);
+                setCategoriesLoading(false);
             }
         };
 
-        fetchProducts();
-    }, []);
+        fetchData();
+    }, [slug]);
+
+    if (categoriesLoading) {
+        return (
+            <>
+                <Header />
+                <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                </div>
+                <Footer />
+            </>
+        );
+    }
 
     if (!category) {
         return notFound();
