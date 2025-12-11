@@ -39,7 +39,7 @@ export default function Home() {
         <HeroBanner
           title="Shopomatix"
           subtitle="Your one-stop shopping destination"
-          ctaText="LOGIN"
+          ctaText="Login/Sign Up"
           ctaLink="/auth/login"
           backgroundImage="/assets/generated.avif"
         />

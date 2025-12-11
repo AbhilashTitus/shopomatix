@@ -59,22 +59,6 @@
       ]
     },
     {
-      "id": "f1",
-      "name": "Men's Cotton Kurta Set",
-      "price": 899,
-      "originalPrice": 2499,
-      "discountPercentage": 64,
-      "image": "/uploads/1765436424813_vjllbuvuadi.png",
-      "link": "/product/mens-kurta-set",
-      "category": "fashion",
-      "description": "100% Cotton Printed Kurta with Pyjama, ideal for festivals and casual wear.",
-      "rating": 4,
-      "reviewCount": 560,
-      "seller": "Trendy Fashions",
-      "inStock": true,
-      "tags": []
-    },
-    {
       "id": "hk1",
       "name": "Prestige Non-Stick Fry Pan",
       "price": 750,

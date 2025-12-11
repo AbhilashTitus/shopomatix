@@ -9,14 +9,6 @@
       "description": "Latest gadgets, mobiles, and electronic devices"
     },
     {
-      "id": "2",
-      "name": "Fashion & Apparel",
-      "slug": "fashion",
-      "image": "/assets/generated.avif",
-      "link": "/category/fashion",
-      "description": "Trendy clothing, footwear, and accessories"
-    },
-    {
       "id": "3",
       "name": "Home & Kitchen",
       "slug": "home-kitchen",

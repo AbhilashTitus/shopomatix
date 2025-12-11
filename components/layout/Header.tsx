@@ -47,22 +47,24 @@ export default function Header({ }: HeaderProps) {
             />
           </Link>
 
-          {/* Desktop Navigation - Centered */}
-          <nav className="hidden lg:flex items-center space-x-10 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-[15px] font-medium text-gray-700 hover:text-primary transition-colors duration-300 relative group tracking-wide"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
-          </nav>
+          {/* Navigation and Right Actions - Combined */}
+          <div className="hidden lg:flex items-center space-x-8 ml-auto">
+            {/* Desktop Navigation */}
+            <nav className="flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-[15px] font-medium text-gray-700 hover:text-primary transition-colors duration-300 relative group tracking-wide"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              ))}
+            </nav>
 
-          {/* Right Actions */}
-          <div className="flex items-center space-x-6 z-20">
+            {/* Right Actions */}
+            <div className="flex items-center space-x-6">
             {/* Cart Icon */}
             <Link
               href="/cart"
@@ -91,7 +93,7 @@ export default function Header({ }: HeaderProps) {
             </Link>
 
             {/* Auth / Profile */}
-            {user ? (
+            {user && (
               <div className="relative">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -127,13 +129,6 @@ export default function Header({ }: HeaderProps) {
                   </div>
                 )}
               </div>
-            ) : (
-              <Link
-                href="/auth/login"
-                className="hidden md:inline-flex text-[14px] font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wide"
-              >
-                Login
-              </Link>
             )}
 
             {/* Seller Onboarding Button */}
@@ -146,46 +141,48 @@ export default function Header({ }: HeaderProps) {
               </Link>
             )}
 
-            {/* Mobile Menu Toggle */}
-            <button
-              className="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle Menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-7 h-7"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-7 h-7"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-              )}
-            </button>
+            </div>
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors z-20"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle Menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-7 h-7"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-7 h-7"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            )}
+          </button>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -204,24 +201,7 @@ export default function Header({ }: HeaderProps) {
                 {item.label}
               </Link>
             ))}
-            {!user ? (
-              <>
-                <Link
-                  href="/auth/login"
-                  className="flex w-full items-center justify-center px-4 py-3 border border-primary text-primary font-bold uppercase tracking-wider rounded-lg hover:bg-primary hover:text-white transition-colors mb-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/seller/register"
-                  className="flex w-full items-center justify-center px-4 py-3 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-lg hover:bg-secondary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Become a Seller
-                </Link>
-              </>
-            ) : (
+            {user ? (
               <button
                 onClick={() => {
                   logout();
@@ -231,6 +211,14 @@ export default function Header({ }: HeaderProps) {
               >
                 Logout ({user.name})
               </button>
+            ) : (
+              <Link
+                href="/seller/register"
+                className="flex w-full items-center justify-center px-4 py-3 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-lg hover:bg-secondary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Become a Seller
+              </Link>
             )}
           </nav>
         </div>

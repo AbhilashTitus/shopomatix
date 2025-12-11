@@ -18,13 +18,22 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
-        // Check for existing session
-        const storedUser = localStorage.getItem('shopomatix_user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+        setMounted(true);
+        // Check for existing session only after mounting
+        if (typeof window !== 'undefined') {
+            const storedUser = localStorage.getItem('shopomatix_user');
+            if (storedUser) {
+                try {
+                    setUser(JSON.parse(storedUser));
+                } catch (error) {
+                    console.error('Error parsing stored user:', error);
+                    localStorage.removeItem('shopomatix_user');
+                }
+            }
         }
         setIsLoading(false);
     }, []);
@@ -43,7 +52,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         };
 
         setUser(mockUser);
-        localStorage.setItem('shopomatix_user', JSON.stringify(mockUser));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('shopomatix_user', JSON.stringify(mockUser));
+        }
         setIsLoading(false);
     };
 
@@ -58,13 +69,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         };
 
         setUser(newUser);
-        localStorage.setItem('shopomatix_user', JSON.stringify(newUser));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('shopomatix_user', JSON.stringify(newUser));
+        }
         setIsLoading(false);
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('shopomatix_user');
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('shopomatix_user');
+        }
         router.push('/');
     };
 

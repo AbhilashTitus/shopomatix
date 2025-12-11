@@ -17,23 +17,30 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([]);
-    const [isInitialized, setIsInitialized] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     // Load cart from local storage on mount
     useEffect(() => {
-        const storedCart = localStorage.getItem('shopomatix_cart');
-        if (storedCart) {
-            setItems(JSON.parse(storedCart));
+        setMounted(true);
+        if (typeof window !== 'undefined') {
+            const storedCart = localStorage.getItem('shopomatix_cart');
+            if (storedCart) {
+                try {
+                    setItems(JSON.parse(storedCart));
+                } catch (error) {
+                    console.error('Error parsing stored cart:', error);
+                    localStorage.removeItem('shopomatix_cart');
+                }
+            }
         }
-        setIsInitialized(true);
     }, []);
 
     // Save cart to local storage whenever it changes
     useEffect(() => {
-        if (isInitialized) {
+        if (mounted && typeof window !== 'undefined') {
             localStorage.setItem('shopomatix_cart', JSON.stringify(items));
         }
-    }, [items, isInitialized]);
+    }, [items, mounted]);
 
     const addToCart = (product: Product, quantity: number = 1) => {
         setItems((prevItems) => {
@@ -67,7 +74,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     const clearCart = () => {
         setItems([]);
-        localStorage.removeItem('shopomatix_cart');
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('shopomatix_cart');
+        }
     };
 
     const cartTotal = items.reduce(

@@ -27,7 +27,7 @@ export default function CartPage() {
                         <p className="text-gray-500 mb-8 max-w-sm mx-auto">Looks like you haven&apos;t added anything to your cart yet.</p>
                         <Link
                             href="/"
-                            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#FF6B6B] hover:bg-[#FF5252] transition-colors"
+                            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-primary hover:bg-secondary transition-colors"
                         >
                             Continue Shopping
                         </Link>
@@ -70,7 +70,7 @@ export default function CartPage() {
                                                 <div>
                                                     <div className="flex justify-between">
                                                         <h3 className="text-sm cursor-pointer">
-                                                            <Link href={item.link} className="font-medium text-gray-700 hover:text-[#FF6B6B]">
+                                                            <Link href={item.link} className="font-medium text-gray-700 hover:text-primary">
                                                                 {item.name}
                                                             </Link>
                                                         </h3>
@@ -151,15 +151,21 @@ export default function CartPage() {
                         </dl>
 
                         <div className="mt-6">
-                            <button
-                                type="button"
-                                className="w-full bg-[#FF6B6B] border border-transparent rounded-full shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-[#FF5252] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF6B6B] uppercase tracking-wider"
-                                onClick={() => {
-                                    alert('Proceeding to checkout...');
-                                }}
-                            >
-                                Proceed to Checkout
-                            </button>
+                            {user ? (
+                                <Link
+                                    href="/checkout"
+                                    className="w-full bg-primary border border-transparent rounded-full shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary uppercase tracking-wider text-center block"
+                                >
+                                    Proceed to Checkout
+                                </Link>
+                            ) : (
+                                <Link
+                                    href="/auth/login"
+                                    className="w-full bg-primary border border-transparent rounded-full shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary uppercase tracking-wider text-center block"
+                                >
+                                    Login to Checkout
+                                </Link>
+                            )}
                             <p className="mt-4 text-xs text-center text-gray-500">
                                 Delivery charges calculated at checkout step.
                             </p>

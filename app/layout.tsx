@@ -56,7 +56,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-import { Providers } from '@/components/Providers'
+import dynamic from 'next/dynamic'
+
+const Providers = dynamic(() => import('@/components/Providers').then(mod => ({ default: mod.Providers })), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+    </div>
+  )
+})
 
 export default function RootLayout({
   children,
