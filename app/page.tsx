@@ -41,7 +41,7 @@ export default function Home() {
           subtitle="Your one-stop shopping destination"
           ctaText="Login/Sign Up"
           ctaLink="/auth/login"
-          backgroundImage="/assets/generated.avif"
+          backgroundImage="/assets/banner.png"
         />
 
         {/* Categories Section */}
