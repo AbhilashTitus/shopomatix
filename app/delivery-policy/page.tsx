@@ -174,7 +174,7 @@ export default function DeliveryPolicyPage() {
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li><strong>OTP Verification:</strong> Enter the OTP sent to your registered mobile number</li>
-                  <li><strong>Digital Signature:</strong> Sign on the delivery partner's device</li>
+                  <li><strong>Digital Signature:</strong> Sign on the delivery partner&apos;s device</li>
                   <li><strong>Photo Confirmation:</strong> For contactless delivery, a photo of the delivered package</li>
                 </ul>
 

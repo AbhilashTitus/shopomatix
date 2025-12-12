@@ -98,8 +98,8 @@ export default function ShippingPolicyPage() {
                 </p>
                 <ol className="list-decimal list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Log in to your Shopomatix account</li>
-                  <li>Go to "My Orders"</li>
-                  <li>Click on "Track Order" for the specific order</li>
+                  <li>Go to &quot;My Orders&quot;</li>
+                  <li>Click on &quot;Track Order&quot; for the specific order</li>
                   <li>View real-time tracking updates</li>
                 </ol>
                 <p className="text-gray-700 leading-relaxed mb-4">

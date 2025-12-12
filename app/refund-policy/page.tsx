@@ -77,8 +77,8 @@ export default function RefundPolicyPage() {
                 </p>
                 <ol className="list-decimal list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Log in to your Shopomatix account</li>
-                  <li>Go to "My Orders" and select the order you wish to return</li>
-                  <li>Click on "Return Item" and select the reason for return</li>
+                  <li>Go to &quot;My Orders&quot; and select the order you wish to return</li>
+                  <li>Click on &quot;Return Item&quot; and select the reason for return</li>
                   <li>Upload photos of the product if required</li>
                   <li>Submit your return request</li>
                 </ol>

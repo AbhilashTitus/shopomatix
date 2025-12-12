@@ -37,9 +37,9 @@ export default function CancellationPolicyPage() {
                 </p>
                 <ol className="list-decimal list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Log in to your Shopomatix account</li>
-                  <li>Go to "My Orders"</li>
+                  <li>Go to &quot;My Orders&quot;</li>
                   <li>Select the order you wish to cancel</li>
-                  <li>Click on "Cancel Order" and select a reason</li>
+                  <li>Click on &quot;Cancel Order&quot; and select a reason</li>
                   <li>Confirm cancellation</li>
                 </ol>
                 <p className="text-gray-700 leading-relaxed mb-4">
