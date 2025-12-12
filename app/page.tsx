@@ -63,7 +63,7 @@ export default function Home() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : (
-            <ProductGrid products={products} />
+            <ProductGrid products={products.slice(0, 5)} />
           )}
         </section>
 

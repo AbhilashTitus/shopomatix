@@ -3,149 +3,141 @@
 import Link from 'next/link';
 import { FooterProps } from '@/components/types';
 
-// Organized links into logical groups
-const shopLinks = [
-  { label: 'Electronics', href: '/category/electronics' },
-  { label: 'Fashion', href: '/category/fashion' },
-  { label: 'Home Appliance', href: '/category/home-appliance' },
-  { label: 'Mobile Accessories', href: '/category/mobile-accessories' },
-];
-
-const helpLinks = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Contact Us', href: '/contact' },
-  { label: 'Order Status', href: '/order-status' }, // Added useful link
-];
-
-const policyLinks = [
-  { label: 'Terms & Conditions', href: '/terms' },
-  { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Refund Policy', href: '/refund-policy' },
-  { label: 'Cancellation Policy', href: '/cancellation-policy' }, // New
-  { label: 'Shipping & Delivery', href: '/shipping-policy' },   // New
-];
-
 export default function Footer({ }: FooterProps) {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
-      <div className="container mx-auto px-6 py-16">
-        {/* Top Section: Branding, Newsletter, and Links Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-
-          {/* Brand & Newsletter (Span 4 cols) */}
-          <div className="lg:col-span-4 space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">Shopomatix</h2>
-              <p className="text-gray-400 text-[15px] leading-relaxed max-w-sm">
-                Your premium destination for electronics, fashion, and home essentials.
-                Experience shopping redefined with quality and trust.
-              </p>
-            </div>
-
-            {/* Newsletter */}
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Subscribe to updates</h3>
-              <form className="space-y-3">
-                <div className="relative">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full pl-4 pr-12 py-3.5 rounded-lg bg-white/5 text-white text-sm border border-white/10 focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder:text-gray-500"
-                    aria-label="Email address"
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-primary text-white text-xs font-bold uppercase tracking-wider rounded-md hover:bg-secondary transition-colors"
-                  >
-                    Join
-                  </button>
-                </div>
-                <p className="text-xs text-gray-500">
-                  By subscribing, you agree to our Policy and acknowledge you&apos;ve read our Privacy Notice.
-                </p>
-              </form>
-            </div>
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <div className="container mx-auto px-6 py-12 pb-4">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <h2 className="text-2xl font-bold mb-4">
+              <span className="text-white">Shopomatix</span>
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Delivering essentials from local stores to your doorstep. Simple, fast, and reliable shopping experience.
+            </p>
           </div>
 
-          {/* Links Grid (Span 8 cols) - 3 Columns */}
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-4">Quick Links</h3>
+            <ul className="space-y-2.5">
+              <li>
+                <Link href="/" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Categories
+                </Link>
+              </li>
+              <li>
+                <Link href="/seller/register" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Seller Onboarding
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  About
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            {/* Column 1: Shop */}
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Shop</h3>
-              <ul className="space-y-3">
-                {shopLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-[15px] text-gray-400 hover:text-primary hover:pl-1 transition-all duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Legal */}
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-4">Legal</h3>
+            <ul className="space-y-2.5">
+              {/* <li>
+                <Link href="/about" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  About Us
+                </Link>
+              </li> */}
+              <li>
+                <Link href="/terms" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/cancellation-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Chargeback Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/shipping-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Shipping Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/shipping-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Delivery Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/cancellation-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                  Cancellation Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            {/* Column 2: Help & Access */}
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Help & Access</h3>
-              <ul className="space-y-3">
-                {helpLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-[15px] text-gray-400 hover:text-primary hover:pl-1 transition-all duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-                <li className="text-[15px] text-gray-400 pt-2">
-                  <div>
-                    <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Customer Support</p>
-                    <p className="hover:text-white transition-colors">support@shopomatix.com</p>
-                    <p className="hover:text-white transition-colors">+1 (555) 123-4567</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3: Policies */}
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Policies</h3>
-              <ul className="space-y-3">
-                {policyLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-[15px] text-gray-400 hover:text-primary hover:pl-1 transition-all duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          {/* Contact */}
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-4">Contact</h3>
+            <ul className="space-y-3">
+              {/* <li className="flex items-start space-x-2">
+                <svg className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span className="text-gray-400 text-sm">Send us a Message</span>
+              </li> */}
+              <li className="flex items-start space-x-2">
+                <svg className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span className="text-gray-400 text-sm">support@shopomatix.com</span>
+              </li>
+              <li className="flex items-start space-x-2">
+                <svg className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span className="text-gray-400 text-sm">+91 7676717667</span>
+              </li>
+              <li className="flex items-start space-x-2">
+                <svg className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div className="text-gray-400 text-sm">
+                  <p>Nexfora Solutions Pvt Ltd</p>
+                  <p>18/1 4th Cross, 2nd Floor,</p>
+                  <p>Rahmath Nagar, R.T. Nagar,</p>
+                  <p>Bangalore, Karnataka</p>
+                  <p>India - 560032</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Section: Copyright */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Shopomatix Inc. All rights reserved.
+        {/* Bottom Copyright Section */}
+        <div className="border-t border-white/10 mt-8 pt-4">
+          <p className="text-center text-gray-400 text-xs">
+            © {new Date().getFullYear()} Shopomatix • Nexfora Solutions Pvt Ltd • Bangalore
           </p>
-          <div className="flex items-center space-x-6">
-            <span className="text-gray-600 text-sm">Secure Payment</span>
-            {/* Simple payment icons simulation or just text to keep it minimal as requested */}
-            <div className="flex space-x-2 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              {/* Placeholders for payment icons if available, distinct text for now */}
-              <div className="h-6 w-10 bg-white/10 rounded flex items-center justify-center text-[8px] font-bold">VISA</div>
-              <div className="h-6 w-10 bg-white/10 rounded flex items-center justify-center text-[8px] font-bold">MC</div>
-              <div className="h-6 w-10 bg-white/10 rounded flex items-center justify-center text-[8px] font-bold">PAYPAL</div>
-            </div>
-          </div>
         </div>
       </div>
     </footer>

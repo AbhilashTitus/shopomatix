@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Electronics",
       "slug": "electronics",
-      "image": "/uploads/1765439224764_b4rzbm25vu4.png",
+      "image": "/uploads/1765530745263_tujqw7oir6m.png",
       "link": "/category/electronics",
       "description": "Latest gadgets, mobiles, and electronic devices"
     },
@@ -12,7 +12,7 @@
       "id": "3",
       "name": "Home & Kitchen",
       "slug": "home-kitchen",
-      "image": "/assets/generated.avif",
+      "image": "/uploads/1765530767448_2ce8higlmrs.png",
       "link": "/category/home-kitchen",
       "description": "Essentials for your home and kitchen"
     },
@@ -20,7 +20,7 @@
       "id": "4",
       "name": "Mobile Accessories",
       "slug": "mobile-accessories",
-      "image": "/assets/generated.avif",
+      "image": "/uploads/1765530779179_aoekrkb4n7p.png",
       "link": "/category/mobile-accessories",
       "description": "Cases, Chargers, and more for your smartphone"
     }

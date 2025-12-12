@@ -130,8 +130,8 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-dark mb-4">Customer Support</h3>
                 <p className="text-gray-600 mb-4">Call us for immediate assistance</p>
                 <div className="space-y-2">
-                  <p className="text-lg font-semibold text-primary">1800-123-4567</p>
-                  <p className="text-sm text-gray-500">Toll-free (India)</p>
+                  <p className="text-lg font-semibold text-primary">+91 7676717667</p>
+                  {/* <p className="text-sm text-gray-500">Toll-free (India)</p> */}
                   <p className="text-sm text-gray-500">Mon-Sat: 9 AM - 9 PM</p>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-dark mb-4">WhatsApp Support</h3>
                 <p className="text-gray-600 mb-4">Chat with us instantly</p>
                 <div className="space-y-2">
-                  <p className="text-lg font-semibold text-green-600">+91 98765 43210</p>
+                  <p className="text-lg font-semibold text-green-600">+91 7676717667</p>
                   <p className="text-sm text-gray-500">Quick responses</p>
                   <p className="text-sm text-gray-500">Mon-Sat: 9 AM - 9 PM</p>
                 </div>
@@ -423,10 +423,11 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium text-dark">Address</p>
                       <p className="text-gray-600">
-                        Shopomatix Technologies Pvt. Ltd.<br />
-                        Plot No. 123, Sector 44,<br />
-                        Gurgaon, Haryana - 122003<br />
-                        India
+                       Nexfora Solutions Pvt Ltd<br />
+                        18/1 4th Cross, 2nd Floor,<br />
+                        Rahmath Nagar, R.T. Nagar, <br />
+                        Bangalore, Karnataka, <br />
+                        India - 560032
                       </p>
                     </div>
                   </div>
@@ -437,19 +438,19 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <p className="font-medium text-dark">Business Inquiries</p>
-                      <p className="text-gray-600">business@shopomatix.com</p>
+                      <p className="text-gray-600">support@shopomatix.com</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3">
+                  {/* <div className="flex items-start space-x-3">
                     <svg className="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <div>
                       <p className="font-medium text-dark">GST Number</p>
-                      <p className="text-gray-600">07AABCS1234F1Z5</p>
+                      <p className="text-gray-600">11111111111111</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
