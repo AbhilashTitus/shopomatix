@@ -121,19 +121,19 @@ export default function SellerRegistrationPage() {
             <>
                 <Header />
                 <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-12 h-12 text-green-600">
+                    <div className="scale-100 animate-bounce transition-transform duration-700 w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 shadow-green-200 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-12 h-12 text-green-600">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                     </div>
-                    <h2 className="text-3xl font-extrabold text-[#2D3436] mb-2">Registration Successful!</h2>
-                    <p className="text-lg text-gray-600 mb-8 max-w-lg">
-                        Your seller account is currently <span className="font-bold text-yellow-600">Under Review</span>.
+                    <h2 className="text-4xl font-extrabold text-[#2D3436] mb-4 tracking-tight">Registration Successful!</h2>
+                    <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+                        Your seller account is currently <span className="font-bold text-yellow-600 px-2 py-0.5 bg-yellow-50 rounded-md">Under Review</span>.
                         We will notify you via email once your details are verified.
                     </p>
                     <Link
                         href="/"
-                        className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#FF6B6B] hover:bg-[#FF5252] transition-colors"
+                        className="inline-flex items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-xl shadow-xl text-white bg-gradient-to-r from-[#FF6B6B] to-[#FF5252] hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
                     >
                         Return to Home
                     </Link>
@@ -146,27 +146,37 @@ export default function SellerRegistrationPage() {
     return (
         <>
             <Header />
-            <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative">
+            <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
                 {/* Background decoration */}
                 <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
-                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]" />
+                    <div className="absolute -top-[10%] -right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute -bottom-[10%] -left-[10%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px] animate-pulse delay-1000" />
                 </div>
 
                 <div className="max-w-4xl mx-auto relative z-10">
                     {/* Progress Bar */}
                     <div className="mb-12">
-                        <h1 className="text-4xl font-extrabold text-[#2D3436] text-center mb-10 tracking-tight">Become a Seller</h1>
-                        <div className="flex items-center justify-between relative max-w-2xl mx-auto">
-                            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-200 -z-10 rounded-full"></div>
-                            <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 h-1 bg-primary -z-10 transition-all duration-500 rounded-full`} style={{ width: `${((step - 1) / 3) * 100}%` }}></div>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#2D3436] text-center mb-12 tracking-tight">
+                            Become a Seller
+                            <span className="block text-lg font-normal text-gray-500 mt-2">Join our growing marketplace today</span>
+                        </h1>
+                        <div className="flex items-center justify-between relative max-w-3xl mx-auto px-4">
+                            <div className="absolute left-0 top-6 transform -translate-y-1/2 w-full h-1.5 bg-gray-100 -z-10 rounded-full overflow-hidden">
+                                <div className="h-full bg-gradient-to-r from-primary to-primary/60 transition-all duration-700 ease-in-out" style={{ width: `${((step - 1) / 3) * 100}%` }}></div>
+                            </div>
 
                             {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="flex flex-col items-center">
-                                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shadow-md transition-all duration-300 ${step >= i ? 'bg-primary text-white scale-110' : 'bg-white text-gray-400 border-2 border-gray-200'}`}>
-                                        {i}
+                                <div key={i} className="flex flex-col items-center group cursor-default">
+                                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center font-bold text-lg md:text-xl shadow-lg transition-all duration-500 transform ${step >= i ? 'bg-primary text-white scale-110 shadow-primary/30 rotate-3' : 'bg-white text-gray-300 border-2 border-gray-100'}`}>
+                                        {step > i ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-7 md:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        ) : (
+                                            i
+                                        )}
                                     </div>
-                                    <span className={`text-xs font-semibold mt-2 uppercase tracking-wide transition-colors duration-300 ${step >= i ? 'text-primary' : 'text-gray-400'}`}>
+                                    <span className={`text-xs md:text-sm font-semibold mt-3 uppercase tracking-wider transition-colors duration-300 ${step >= i ? 'text-primary' : 'text-gray-400'}`}>
                                         {i === 1 ? 'Basic' : i === 2 ? 'Business' : i === 3 ? 'Address' : 'Bank'}
                                     </span>
                                 </div>
@@ -174,32 +184,32 @@ export default function SellerRegistrationPage() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                        <form onSubmit={handleSubmit} className="p-8 md:p-12">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-gray-200/50 overflow-hidden border border-white/50 ring-1 ring-gray-100">
+                        <form onSubmit={handleSubmit} className="p-6 md:p-12">
                             {/* Step 1: Basic Details */}
                             {step === 1 && (
                                 <div className="space-y-8 animate-fade-in-up">
-                                    <div className="border-b border-gray-100 pb-4">
+                                    <div className="border-b border-gray-100 pb-6">
                                         <h3 className="text-2xl font-bold text-gray-900">Basic Details</h3>
-                                        <p className="text-gray-500 text-sm mt-1">Tell us a bit about yourself.</p>
+                                        <p className="text-gray-500 text-sm mt-2">Let&apos;s get started with your personal information.</p>
                                     </div>
 
-                                    <div className="grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2">
-                                        <div className="sm:col-span-2">
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                                            <input type="text" name="name" required value={formData.name} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="Enter full name" />
+                                    <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                                        <div className="sm:col-span-2 group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Full Name</label>
+                                            <input type="text" name="name" required value={formData.name} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="Enter full name" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                                            <input type="email" name="email" required value={formData.email} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="Enter email" />
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Email Address</label>
+                                            <input type="email" name="email" required value={formData.email} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="Enter email" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Mobile Number</label>
-                                            <input type="tel" name="mobile" required pattern="[0-9]{10}" value={formData.mobile} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="10 digits" />
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Mobile Number</label>
+                                            <input type="tel" name="mobile" required pattern="[0-9]{10}" value={formData.mobile} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="10 digits" />
                                         </div>
-                                        <div className="sm:col-span-2">
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-                                            <input type="password" name="password" required value={formData.password} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="Create a password" />
+                                        <div className="sm:col-span-2 group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Password</label>
+                                            <input type="password" name="password" required value={formData.password} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="Create a strong password" />
                                         </div>
                                     </div>
                                 </div>
@@ -208,49 +218,60 @@ export default function SellerRegistrationPage() {
                             {/* Step 2: Business Info */}
                             {step === 2 && (
                                 <div className="space-y-8 animate-fade-in-up">
-                                    <div className="border-b border-gray-100 pb-4">
+                                    <div className="border-b border-gray-100 pb-6">
                                         <h3 className="text-2xl font-bold text-gray-900">Business Information</h3>
-                                        <p className="text-gray-500 text-sm mt-1">Details about your store and business type.</p>
+                                        <p className="text-gray-500 text-sm mt-2">Tell us about your business entity.</p>
                                     </div>
-                                    <div className="grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2">
-                                        <div className="sm:col-span-2">
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Store / Business Name</label>
-                                            <input type="text" name="storeName" required value={formData.storeName} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="e.g. My Awesome Store" />
+                                    <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                                        <div className="sm:col-span-2 group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Store / Business Name</label>
+                                            <input type="text" name="storeName" required value={formData.storeName} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="e.g. My Awesome Store" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Business Type</label>
-                                            <select name="businessType" value={formData.businessType} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors">
-                                                <option value="individual">Individual / Sole Proprietor</option>
-                                                <option value="partnership">Partnership</option>
-                                                <option value="pvtltd">Private Limited</option>
-                                            </select>
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Business Type</label>
+                                            <div className="relative">
+                                                <select name="businessType" value={formData.businessType} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300 appearance-none">
+                                                    <option value="individual">Individual / Sole Proprietor</option>
+                                                    <option value="partnership">Partnership</option>
+                                                    <option value="pvtltd">Private Limited</option>
+                                                </select>
+                                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">GST Number <span className="text-red-500">*</span></label>
-                                            <div className="flex gap-2">
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">GST Number <span className="text-red-500">*</span></label>
+                                            <div className="flex gap-3">
                                                 <input type="text" name="gstNumber" value={formData.gstNumber} onChange={(e) => {
                                                     handleChange(e);
                                                     setGstVerified(false);
                                                     setGstMessage({ type: '', text: '' });
-                                                }} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="GSTIN" />
+                                                }} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="GSTIN" />
                                                 <button
                                                     type="button"
                                                     onClick={verifyGst}
                                                     disabled={verifyingGst || gstVerified}
-                                                    className={`px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors ${gstVerified ? 'bg-green-500 cursor-default' : 'bg-blue-600 hover:bg-blue-700'}`}
+                                                    className={`px-6 py-2 rounded-xl text-sm font-bold shadow-md transition-all duration-300 whitespace-nowrap ${gstVerified ? 'bg-green-500 text-white shadow-green-200' : 'bg-primary text-white hover:bg-primary-dark shadow-primary/30 hover:shadow-primary/50'}`}
                                                 >
-                                                    {verifyingGst ? '...' : gstVerified ? 'Verified' : 'Verify'}
+                                                    {verifyingGst ? (
+                                                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                        </svg>
+                                                    ) : gstVerified ? 'Verified' : 'Verify'}
                                                 </button>
                                             </div>
                                             {gstMessage.text && (
-                                                <p className={`mt-1 text-xs ${gstMessage.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                                                <p className={`mt-2 text-xs font-medium flex items-center ${gstMessage.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                                                    {gstMessage.type === 'success' && <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>}
                                                     {gstMessage.text}
                                                 </p>
                                             )}
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">PAN Number (Optional)</label>
-                                            <input type="text" name="panNumber" value={formData.panNumber} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="PAN" />
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">PAN Number (Optional)</label>
+                                            <input type="text" name="panNumber" value={formData.panNumber} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="PAN for tax verification" />
                                         </div>
                                     </div>
                                 </div>
@@ -259,33 +280,38 @@ export default function SellerRegistrationPage() {
                             {/* Step 3: Address */}
                             {step === 3 && (
                                 <div className="space-y-8 animate-fade-in-up">
-                                    <div className="border-b border-gray-100 pb-4">
+                                    <div className="border-b border-gray-100 pb-6">
                                         <h3 className="text-2xl font-bold text-gray-900">Pickup Address</h3>
-                                        <p className="text-gray-500 text-sm mt-1">Where should we pick up your products from?</p>
+                                        <p className="text-gray-500 text-sm mt-2">Logistics partners will pick up from here.</p>
                                     </div>
-                                    <div className="grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2">
-                                        <div className="sm:col-span-2">
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Address Line 1</label>
-                                            <input type="text" name="addressLine1" required value={formData.addressLine1} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="Building, Street, Area" />
+                                    <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                                        <div className="sm:col-span-2 group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Address Line 1</label>
+                                            <input type="text" name="addressLine1" required value={formData.addressLine1} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="Building, Street, Area" />
                                         </div>
-                                        <div className="sm:col-span-2">
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Address Line 2</label>
-                                            <input type="text" name="addressLine2" value={formData.addressLine2} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="Landmark, etc." />
+                                        <div className="sm:col-span-2 group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Address Line 2</label>
+                                            <input type="text" name="addressLine2" value={formData.addressLine2} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="Landmark, etc." />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">City</label>
-                                            <input type="text" name="city" required value={formData.city} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" />
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">City</label>
+                                            <input type="text" name="city" required value={formData.city} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">State</label>
-                                            <select name="state" required value={formData.state} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors">
-                                                <option value="">Select State</option>
-                                                {indianStates.map(state => <option key={state} value={state}>{state}</option>)}
-                                            </select>
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">State</label>
+                                            <div className="relative">
+                                                <select name="state" required value={formData.state} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300 appearance-none">
+                                                    <option value="">Select State</option>
+                                                    {indianStates.map(state => <option key={state} value={state}>{state}</option>)}
+                                                </select>
+                                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Pincode</label>
-                                            <input type="text" name="pincode" required pattern="[0-9]{6}" value={formData.pincode} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" />
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Pincode</label>
+                                            <input type="text" name="pincode" required pattern="[0-9]{6}" value={formData.pincode} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" />
                                         </div>
                                     </div>
                                 </div>
@@ -294,34 +320,34 @@ export default function SellerRegistrationPage() {
                             {/* Step 4: Bank Details */}
                             {step === 4 && (
                                 <div className="space-y-8 animate-fade-in-up">
-                                    <div className="border-b border-gray-100 pb-4">
+                                    <div className="border-b border-gray-100 pb-6">
                                         <h3 className="text-2xl font-bold text-gray-900">Bank Details</h3>
-                                        <p className="text-gray-500 text-sm mt-1">For receiving payments.</p>
+                                        <p className="text-gray-500 text-sm mt-2">Securely link your bank account for payouts.</p>
                                     </div>
-                                    <div className="grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2">
-                                        <div className="sm:col-span-2">
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Account Holder Name</label>
-                                            <input type="text" name="accountHolder" required value={formData.accountHolder} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" placeholder="As per bank records" />
+                                    <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                                        <div className="sm:col-span-2 group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Account Holder Name</label>
+                                            <input type="text" name="accountHolder" required value={formData.accountHolder} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" placeholder="Exactly as per bank records" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Bank Name</label>
-                                            <input type="text" name="bankName" required value={formData.bankName} onChange={handleChange} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" />
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Bank Name</label>
+                                            <input type="text" name="bankName" required value={formData.bankName} onChange={handleChange} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Account Number</label>
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">Account Number</label>
                                             <input type="text" name="accountNumber" required value={formData.accountNumber} onChange={(e) => {
                                                 handleChange(e);
                                                 setBankVerified(false);
                                                 setBankMessage({ type: '', text: '' });
-                                            }} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" />
+                                            }} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" />
                                         </div>
-                                        <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">IFSC Code</label>
+                                        <div className="group">
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-primary transition-colors">IFSC Code</label>
                                             <input type="text" name="ifsc" required value={formData.ifsc} onChange={(e) => {
                                                 handleChange(e);
                                                 setBankVerified(false);
                                                 setBankMessage({ type: '', text: '' });
-                                            }} className="block w-full border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary sm:text-sm py-3 px-4 bg-gray-50 focus:bg-white transition-colors" />
+                                            }} className="block w-full border-gray-200 rounded-xl shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary sm:text-sm py-3.5 px-4 bg-gray-50/50 focus:bg-white transition-all duration-300" />
                                         </div>
                                         <div className="sm:col-span-2">
                                             <div className="flex justify-end">
@@ -329,13 +355,14 @@ export default function SellerRegistrationPage() {
                                                     type="button"
                                                     onClick={verifyBank}
                                                     disabled={verifyingBank || bankVerified}
-                                                    className={`px-6 py-2 rounded-lg text-sm font-medium text-white transition-colors ${bankVerified ? 'bg-green-500 cursor-default' : 'bg-blue-600 hover:bg-blue-700'}`}
+                                                    className={`px-8 py-3 rounded-xl text-sm font-bold shadow-md transition-all duration-300 transform hover:-translate-y-0.5 ${bankVerified ? 'bg-green-500 text-white shadow-green-200 cursor-default' : 'bg-primary text-white hover:bg-primary-dark shadow-primary/30 hover:shadow-primary/50'}`}
                                                 >
-                                                    {verifyingBank ? 'Verifying...' : bankVerified ? 'Verified' : 'Verify Account'}
+                                                    {verifyingBank ? 'Verifying with Bank...' : bankVerified ? 'Account Verified' : 'Verify Account'}
                                                 </button>
                                             </div>
                                             {bankMessage.text && (
-                                                <p className={`mt-2 text-right text-sm ${bankMessage.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                                                <p className={`mt-3 text-right text-sm font-medium flex items-center justify-end ${bankMessage.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                                                    {bankMessage.type === 'success' && <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>}
                                                     {bankMessage.text}
                                                 </p>
                                             )}
@@ -345,38 +372,49 @@ export default function SellerRegistrationPage() {
                             )}
 
                             {/* Navigation Buttons */}
-                            <div className="mt-10 flex justify-between pt-6 border-t border-gray-100">
+                            <div className="mt-12 flex items-center justify-between pt-8 border-t border-gray-100">
                                 {step > 1 ? (
-                                    <button type="button" onClick={handleBack} className="bg-white py-3 px-8 border border-gray-300 rounded-full shadow-sm text-sm font-bold uppercase tracking-wide text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 hover:shadow-md">
+                                    <button type="button" onClick={handleBack} className="flex items-center px-6 py-3 border border-gray-200 rounded-xl text-sm font-bold text-gray-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 transition-all duration-300 shadow-sm hover:shadow-md">
+                                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                                         Back
                                     </button>
-                                ) : <div></div>}
+                                ) : <div />}
 
                                 {step < 4 ? (
-                                    <button type="button" onClick={handleNext} className="bg-primary py-3 px-10 border border-transparent rounded-full shadow-lg text-sm font-bold uppercase tracking-wide text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:-translate-y-0.5">
-                                        Next
+                                    <button type="button" onClick={handleNext} className="flex items-center px-8 py-3 rounded-xl text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-0.5">
+                                        Next detailed step
+                                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                                     </button>
                                 ) : (
-                                    <div className="flex flex-col items-end">
-                                        <button
-                                            type="submit"
-                                            disabled={loading || !gstVerified || !bankVerified}
-                                            className="bg-green-600 py-3 px-10 border border-transparent rounded-full shadow-lg text-sm font-bold uppercase tracking-wide text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:-translate-y-0.5"
-                                        >
-                                            {loading ? 'Submitting...' : 'Submit Application'}
-                                        </button>
-                                        {(!gstVerified || !bankVerified) && (
-                                            <p className="text-red-500 text-xs mt-2 font-medium">
-                                                Please complete GST and Bank Account verification to submit
-                                            </p>
-                                        )}
-                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={loading || !gstVerified || !bankVerified}
+                                        className="flex items-center px-10 py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transform hover:-translate-y-0.5"
+                                    >
+                                        {loading ? (
+                                            <>
+                                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Submitting Application...
+                                            </>
+                                        ) : 'Final Submit'}
+                                    </button>
                                 )}
                             </div>
+                            {step === 4 && (!gstVerified || !bankVerified) && (
+                                <div className="mt-4 text-center">
+                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>
+                                        Completion of GST and Bank Verification is mandatory
+                                    </span>
+                                </div>
+                            )}
                         </form>
-                    </div >
-                </div >
-            </div >
+                    </div>
+                </div>
+            </div>
             <Footer />
         </>
     );
