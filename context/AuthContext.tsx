@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Mock login logic
         const mockUser: User = {
             id: '1',
-            name: 'Abhilash Titus',
+            name: 'Demo User',
             email: email,
             role: 'user',
         };
