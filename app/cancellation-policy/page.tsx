@@ -105,7 +105,7 @@ export default function CancellationPolicyPage() {
                   <li>Customized or personalized products</li>
                   <li>Perishable goods already prepared for delivery</li>
                   <li>Digital products and gift cards</li>
-                  <li>Products marked as "non-cancellable" at the time of purchase</li>
+                  <li>Products marked as &quot;non-cancellable&quot; at the time of purchase</li>
                 </ul>
               </div>
 

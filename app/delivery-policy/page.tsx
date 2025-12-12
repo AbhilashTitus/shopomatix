@@ -142,7 +142,7 @@ export default function DeliveryPolicyPage() {
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Contacting the delivery partner directly (number provided in SMS)</li>
                   <li>Calling our customer support at 1800-123-4567</li>
-                  <li>Using the "Reschedule Delivery" option in your order tracking page</li>
+                  <li>Using the &quot;Reschedule Delivery&quot; option in your order tracking page</li>
                 </ul>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Rescheduling is subject to delivery partner availability and may extend the delivery timeline.
@@ -252,7 +252,7 @@ export default function DeliveryPolicyPage() {
                 
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">9.1 Non-Delivery</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  If your order shows as delivered but you haven't received it:
+                  If your order shows as delivered but you haven&apos;t received it:
                 </p>
                 <ol className="list-decimal list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Check with family members or neighbors</li>
@@ -319,7 +319,7 @@ export default function DeliveryPolicyPage() {
                   <li>Provide accurate and complete delivery address</li>
                   <li>Ensure someone is available to receive the delivery</li>
                   <li>Keep registered mobile number active and reachable</li>
-                  <li>Respond to delivery partner's calls/messages</li>
+                  <li>Respond to delivery partner&apos;s calls/messages</li>
                   <li>Provide access to delivery location</li>
                   <li>Inspect the package at the time of delivery</li>
                   <li>Report issues immediately</li>

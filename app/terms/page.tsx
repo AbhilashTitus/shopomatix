@@ -87,7 +87,7 @@ export default function TermsPage() {
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>All customer payments are held in a dedicated third-party corporate settlement account</li>
-                  <li>This account is separate from Shopomatix's operational accounts</li>
+                  <li>This account is separate from Shopomatix&apos;s operational accounts</li>
                   <li>Funds are held in escrow until order fulfillment is confirmed</li>
                   <li>Settlement to sellers occurs after deducting applicable platform fees and taxes</li>
                   <li>In case of disputes or refunds, funds are held until resolution</li>

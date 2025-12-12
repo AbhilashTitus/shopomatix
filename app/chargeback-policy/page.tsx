@@ -142,7 +142,7 @@ export default function ChargebackPolicyPage() {
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">7. Chargeback Fees</h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Banks and payment processors charge fees for processing chargebacks (typically ₹500-₹1500 per chargeback). These fees are non-refundable even if the chargeback is resolved in the merchant's favor. In cases of fraudulent chargebacks, we reserve the right to recover these fees from the customer.
+                  Banks and payment processors charge fees for processing chargebacks (typically ₹500-₹1500 per chargeback). These fees are non-refundable even if the chargeback is resolved in the merchant&apos;s favor. In cases of fraudulent chargebacks, we reserve the right to recover these fees from the customer.
                 </p>
               </div>
 

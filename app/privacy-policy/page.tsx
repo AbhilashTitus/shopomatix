@@ -172,7 +172,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Section 8 */}
               <div className="mb-10">
-                <h2 className="text-2xl font-bold text-dark mb-4">8. Children's Privacy</h2>
+                <h2 className="text-2xl font-bold text-dark mb-4">8. Children&apos;s Privacy</h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Our platform is not intended for children under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
                 </p>

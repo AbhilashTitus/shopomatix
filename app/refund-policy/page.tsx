@@ -63,7 +63,7 @@ export default function RefundPolicyPage() {
                   <li>Products with tampered or broken seals</li>
                   <li>Customized or personalized products</li>
                   <li>Digital products and gift cards</li>
-                  <li>Products marked as "non-returnable" at the time of purchase</li>
+                  <li>Products marked as &quot;non-returnable&quot; at the time of purchase</li>
                 </ul>
               </div>
 
