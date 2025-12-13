@@ -135,7 +135,7 @@ export default function Header() {
               {!user && (
                 <Link
                   href="/seller/register"
-                  className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-full hover:bg-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+                  className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white text-[14px] font-semibold rounded-lg hover:bg-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 shadow-md"
                 >
                   Become a Seller
                 </Link>

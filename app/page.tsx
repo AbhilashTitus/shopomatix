@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import HeroBanner from '@/components/home/HeroBanner';
+import ModernHeroBanner from '@/components/home/ModernHeroBanner';
+import BudgetProducts from '@/components/home/BudgetProducts';
 import Categories from '@/components/home/Categories';
 import ProductGrid from '@/components/home/ProductGrid';
 import SubscribeForm from '@/components/ui/SubscribeForm';
@@ -35,14 +36,8 @@ export default function Home() {
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <HeroBanner
-          title="Shopomatix"
-          subtitle="Your one-stop shopping destination"
-          ctaText="Login/Sign Up"
-          ctaLink="/auth/login"
-          backgroundImage="/assets/banner.png"
-        />
+        {/* Modern Hero Section */}
+        <ModernHeroBanner products={products} />
 
         {/* Categories Section */}
         {categoriesLoading ? (
@@ -53,11 +48,23 @@ export default function Home() {
           <Categories categories={categories} />
         )}
 
+        {/* Budget Products Section */}
+        {productsLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        ) : (
+          <BudgetProducts products={products} />
+        )}
+
         {/* Featured Products Section */}
         <section className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
-          <h2 className="font-bold text-[32px] leading-tight text-dark mb-8 text-center">
-            Featured Products
-          </h2>
+          <div className="text-center mb-10">
+            <h2 className="font-bold text-3xl sm:text-4xl text-dark mb-3">
+              Featured Products
+            </h2>
+            <p className="text-gray-600 text-lg">Handpicked deals just for you</p>
+          </div>
           {productsLoading ? (
             <div className="flex items-center justify-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>

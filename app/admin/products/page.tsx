@@ -75,9 +75,17 @@ export default function ProductsPage() {
     setEditingProduct(null);
   };
 
-  const handleProductSaved = () => {
-    fetchProducts(); // Refresh the list
+  const handleProductSaved = async () => {
+    // Save current scroll position
+    const scrollPosition = window.scrollY;
+    
+    await fetchProducts(); // Refresh the list
     handleModalClose();
+    
+    // Restore scroll position after a short delay to ensure DOM is updated
+    setTimeout(() => {
+      window.scrollTo(0, scrollPosition);
+    }, 100);
   };
 
   // Filter products based on search and category
