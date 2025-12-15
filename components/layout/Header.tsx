@@ -24,8 +24,23 @@ const navigationItems: NavItem[] = allNavigationItems.filter(
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isSeller, setIsSeller] = useState(false);
   const { user, logout } = useAuth();
   const { cartCount } = useCart();
+
+  // Check if user is a seller
+  useState(() => {
+    const checkSellerStatus = () => {
+      const sellerData = localStorage.getItem('sm_new_seller');
+      setIsSeller(!!sellerData);
+    };
+    
+    checkSellerStatus();
+    
+    // Listen for storage changes
+    window.addEventListener('storage', checkSellerStatus);
+    return () => window.removeEventListener('storage', checkSellerStatus);
+  });
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -131,8 +146,15 @@ export default function Header() {
                 </div>
               )}
 
-              {/* Seller Onboarding Button */}
-              {!user && (
+              {/* Seller Button */}
+              {isSeller ? (
+                <Link
+                  href="/seller-dashboard"
+                  className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white text-[14px] font-semibold rounded-lg hover:bg-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+                >
+                  Seller Dashboard
+                </Link>
+              ) : !user && (
                 <Link
                   href="/seller/register"
                   className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white text-[14px] font-semibold rounded-lg hover:bg-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 shadow-md"
@@ -354,13 +376,23 @@ export default function Header() {
                 >
                   Sign In
                 </Link>
-                <Link
-                  href="/seller/register"
-                  className="flex w-full items-center justify-center px-4 py-3 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-lg hover:bg-secondary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Become a Seller
-                </Link>
+                {isSeller ? (
+                  <Link
+                    href="/seller-dashboard"
+                    className="flex w-full items-center justify-center px-4 py-3 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-lg hover:bg-secondary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Seller Dashboard
+                  </Link>
+                ) : (
+                  <Link
+                    href="/seller/register"
+                    className="flex w-full items-center justify-center px-4 py-3 bg-primary text-white text-[14px] font-bold uppercase tracking-wider rounded-lg hover:bg-secondary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Become a Seller
+                  </Link>
+                )}
               </div>
             )}
           </nav>

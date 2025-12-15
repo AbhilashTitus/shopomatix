@@ -70,7 +70,7 @@ export default function SubscribeForm({ onSubmit }: SubscribeFormProps) {
               disabled={isSubmitting}
               className="px-10 py-4 bg-primary text-white text-[15px] font-bold uppercase tracking-wider rounded-full hover:bg-white hover:text-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              {isSubmitting ? '...' : 'Subscribe'}
+              {isSubmitting ? '...' : 'Get Notified'}
             </button>
 
             {error && (

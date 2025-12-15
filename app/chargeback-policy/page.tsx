@@ -115,6 +115,37 @@ export default function ChargebackPolicyPage() {
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Sellers on our platform are liable for chargebacks related to their products or services. Chargeback amounts and associated fees will be deducted from seller settlements. Excessive chargebacks may result in seller account suspension.
                 </p>
+
+                <h3 className="text-xl font-semibold text-dark mb-3 mt-6">5.3 Seller Liability for Chargebacks and Fraud</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  In a marketplace transaction, the seller shall bear full responsibility and financial liability for all chargebacks, refunds, and fraud-related issues arising from their products or transactions on the Shopomatix platform.
+                </p>
+                
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  <strong>Seller Responsibilities:</strong>
+                </p>
+                <ol className="list-decimal list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
+                  <li>The seller is solely responsible for chargebacks resulting from non-delivery, delayed delivery, defective products, or products not matching the description.</li>
+                  <li>The seller shall bear the full transaction amount and any applicable chargeback or processing fees imposed by banks or payment gateways.</li>
+                  <li>Any refunds initiated due to seller-side issues shall be the responsibility of the seller and may be adjusted against future settlements.</li>
+                  <li>In cases of fraud attributable to the seller, the seller agrees to indemnify and hold harmless Shopomatix and Nexfora Solutions Pvt Ltd from all losses, penalties, and claims.</li>
+                </ol>
+
+                <p className="text-gray-700 leading-relaxed mb-4 mt-6">
+                  Upon request by Shopomatix, payment partners, banks, or regulatory authorities, the seller must promptly provide complete and accurate documentation including:
+                </p>
+                <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
+                  <li>Complete seller details and business information</li>
+                  <li>Transaction records and payment receipts</li>
+                  <li>Invoices and billing documentation</li>
+                  <li>Proof of delivery with tracking information</li>
+                  <li>Product descriptions and specifications</li>
+                  <li>Customer communication records</li>
+                </ul>
+
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Failure to provide required documentation or repeated chargeback incidents may result in immediate account suspension, withholding of settlements, and potential legal action to recover losses.
+                </p>
               </div>
 
               <div className="mb-10">

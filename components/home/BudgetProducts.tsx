@@ -25,7 +25,7 @@ export default function BudgetProducts({ products }: BudgetProductsProps) {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-dark mb-2">
-              Products Between ₹100 – ₹200
+              Everyday Wins Under ₹200
             </h2>
             <p className="text-gray-600">Best value for money deals</p>
           </div>

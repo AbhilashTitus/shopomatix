@@ -9,7 +9,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Shopomatix - Your One-Stop Shopping Destination',
+  title: 'Shopomatix',
   description: 'Shopomatix is a modern ecommerce marketplace offering Electronics, Fashion, and Home Appliances. Discover the best deals and latest products.',
   keywords: ['ecommerce', 'marketplace', 'electronics', 'fashion', 'home appliances', 'online shopping'],
   authors: [{ name: 'Shopomatix' }],

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 
 export default function SellerRegistrationPage() {
     const [step, setStep] = useState(1);
+    const [devMode, setDevMode] = useState(false);
     const [formData, setFormData] = useState({
         // Step 1
         name: '',
@@ -42,7 +43,24 @@ export default function SellerRegistrationPage() {
     const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        
+        // Dev bypass: Check if storeName is "DEV_SKIP"
+        if (name === 'storeName' && value === 'DEV_SKIP') {
+            setDevMode(true);
+            setGstVerified(true);
+            setBankVerified(true);
+            setGstMessage({ type: 'success', text: 'Developer bypass activated' });
+            setBankMessage({ type: 'success', text: 'Developer bypass activated' });
+        } else if (name === 'storeName' && devMode && value !== 'DEV_SKIP') {
+            // Reset if user changes the store name from DEV_SKIP
+            setDevMode(false);
+            setGstVerified(false);
+            setBankVerified(false);
+            setGstMessage({ type: '', text: '' });
+            setBankMessage({ type: '', text: '' });
+        }
     };
 
     const handleNext = () => {
@@ -99,14 +117,43 @@ export default function SellerRegistrationPage() {
         setVerifyingBank(false);
     };
 
+    const generateSellerId = () => {
+        const randomNumbers = Math.floor(100000 + Math.random() * 900000);
+        return `SHOMTX-IND-${randomNumbers}`;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        
         // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 2000));
+        
+        // Generate unique seller ID
+        const sellerId = generateSellerId();
+        
+        // Store seller data in localStorage
+        const sellerData = {
+            sellerId,
+            ...formData,
+            gstVerified,
+            bankVerified,
+            registrationDate: new Date().toISOString(),
+            status: 'active'
+        };
+        
+        localStorage.setItem('sm_new_seller', JSON.stringify(sellerData));
+        
         setLoading(false);
         setStep(5); // Success step
     };
+
+    // Scroll to top when success page is shown
+    useEffect(() => {
+        if (step === 5) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }, [step]);
 
     const indianStates = [
         'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
@@ -117,26 +164,148 @@ export default function SellerRegistrationPage() {
     ];
 
     if (step === 5) {
+        const sellerData = JSON.parse(localStorage.getItem('sm_new_seller') || '{}');
+        
         return (
             <>
                 <Header />
-                <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="scale-100 animate-bounce transition-transform duration-700 w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 shadow-green-200 shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-12 h-12 text-green-600">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
+                <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-4xl mx-auto">
+                        {/* Success Animation */}
+                        <div className="text-center mb-8">
+                            <div className="inline-flex w-24 h-24 bg-green-100 rounded-full items-center justify-center mb-6 shadow-lg shadow-green-200 animate-bounce">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-12 h-12 text-green-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                            </div>
+                            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+                                🎉 Welcome to Shopomatix!
+                            </h1>
+                            <p className="text-xl text-gray-600 mb-2">
+                                Your seller account dashboard has been successfully created.
+                            </p>
+                        </div>
+
+                        {/* Seller ID Card */}
+                        <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-6 mb-6 shadow-xl">
+                            <div className="text-center">
+                                <p className="text-white/80 text-sm font-medium mb-2">Your Unique Seller ID</p>
+                                <p className="text-3xl md:text-4xl font-bold text-white tracking-wider mb-2">
+                                    {sellerData.sellerId}
+                                </p>
+                                <p className="text-white/70 text-xs">Keep this ID safe for all future transactions</p>
+                            </div>
+                        </div>
+
+                        {/* Seller Details Card */}
+                        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-6">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-3">Seller Details</h2>
+                            
+                            {/* Personal Information */}
+                            <div className="mb-6">
+                                <h3 className="text-lg font-semibold text-gray-800 mb-3">Personal Information</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p className="text-sm text-gray-500">Full Name</p>
+                                        <p className="font-medium text-gray-900">{sellerData.name}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">Email</p>
+                                        <p className="font-medium text-gray-900">{sellerData.email}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">Mobile</p>
+                                        <p className="font-medium text-gray-900">{sellerData.mobile}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Business Information */}
+                            <div className="mb-6">
+                                <h3 className="text-lg font-semibold text-gray-800 mb-3">Business Information</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p className="text-sm text-gray-500">Store Name</p>
+                                        <p className="font-medium text-gray-900">{sellerData.storeName}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">Business Type</p>
+                                        <p className="font-medium text-gray-900 capitalize">{sellerData.businessType}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">GST Number</p>
+                                        <div className="flex items-center gap-2">
+                                            <p className="font-medium text-gray-900">{sellerData.gstNumber}</p>
+                                            {sellerData.gstVerified && (
+                                                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                                    ✓ Verified
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                    {sellerData.panNumber && (
+                                        <div>
+                                            <p className="text-sm text-gray-500">PAN Number</p>
+                                            <p className="font-medium text-gray-900">{sellerData.panNumber}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Address */}
+                            <div className="mb-6">
+                                <h3 className="text-lg font-semibold text-gray-800 mb-3">Pickup Address</h3>
+                                <div className="bg-gray-50 rounded-lg p-4">
+                                    <p className="text-gray-900">{sellerData.addressLine1}</p>
+                                    {sellerData.addressLine2 && <p className="text-gray-900">{sellerData.addressLine2}</p>}
+                                    <p className="text-gray-900">{sellerData.city}, {sellerData.state} - {sellerData.pincode}</p>
+                                </div>
+                            </div>
+
+                            {/* Bank Details */}
+                            <div>
+                                <h3 className="text-lg font-semibold text-gray-800 mb-3">Bank Details</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p className="text-sm text-gray-500">Account Holder</p>
+                                        <p className="font-medium text-gray-900">{sellerData.accountHolder}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">Bank Name</p>
+                                        <p className="font-medium text-gray-900">{sellerData.bankName}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">Account Number</p>
+                                        <div className="flex items-center gap-2">
+                                            <p className="font-medium text-gray-900">****{sellerData.accountNumber.slice(-4)}</p>
+                                            {sellerData.bankVerified && (
+                                                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                                    ✓ Verified
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500">IFSC Code</p>
+                                        <p className="font-medium text-gray-900">{sellerData.ifsc}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Action Button */}
+                        <div className="text-center">
+                            <Link
+                                href="/seller-dashboard"
+                                className="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-primary to-secondary rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+                            >
+                                Go to Seller Dashboard
+                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </Link>
+                        </div>
                     </div>
-                    <h2 className="text-4xl font-extrabold text-[#2D3436] mb-4 tracking-tight">Registration Successful!</h2>
-                    <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-                        Your seller account is currently <span className="font-bold text-yellow-600 px-2 py-0.5 bg-yellow-50 rounded-md">Under Review</span>.
-                        We will notify you via email once your details are verified.
-                    </p>
-                    <Link
-                        href="/"
-                        className="inline-flex items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-xl shadow-xl text-white bg-gradient-to-r from-[#FF6B6B] to-[#FF5252] hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-                    >
-                        Return to Home
-                    </Link>
                 </div>
                 <Footer />
             </>
@@ -388,7 +557,7 @@ export default function SellerRegistrationPage() {
                                 ) : (
                                     <button
                                         type="submit"
-                                        disabled={loading || !gstVerified || !bankVerified}
+                                        disabled={loading || (!devMode && (!gstVerified || !bankVerified))}
                                         className="flex items-center px-10 py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transform hover:-translate-y-0.5"
                                     >
                                         {loading ? (
@@ -403,7 +572,8 @@ export default function SellerRegistrationPage() {
                                     </button>
                                 )}
                             </div>
-                            {step === 4 && (!gstVerified || !bankVerified) && (
+                            
+                            {step === 4 && (!gstVerified || !bankVerified) && !devMode && (
                                 <div className="mt-4 text-center">
                                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                         <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>

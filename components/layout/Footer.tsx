@@ -72,7 +72,7 @@ export default function Footer({ }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/cancellation-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                <Link href="/chargeback-policy" className="text-gray-400 text-sm hover:text-primary transition-colors">
                   Chargeback Policy
                 </Link>
               </li>
