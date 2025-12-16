@@ -40,6 +40,8 @@ export default function SellerRegistrationPage() {
     const [verifyingBank, setVerifyingBank] = useState(false);
     const [gstMessage, setGstMessage] = useState({ type: '', text: '' });
     const [bankMessage, setBankMessage] = useState({ type: '', text: '' });
+    const [agreeTerms, setAgreeTerms] = useState(false);
+    const [confirmAccuracy, setConfirmAccuracy] = useState(false);
     const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -540,6 +542,44 @@ export default function SellerRegistrationPage() {
                                 </div>
                             )}
 
+                            {/* Terms and Conditions Checkboxes - Only show on Step 4 */}
+                            {step === 4 && (
+                                <div className="mt-8 space-y-4">
+                                    {/* Terms & Conditions Checkbox */}
+                                    <div className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-primary/30 transition-all duration-300">
+                                        <label className="flex items-start cursor-pointer group">
+                                            <input
+                                                type="checkbox"
+                                                checked={agreeTerms}
+                                                onChange={(e) => setAgreeTerms(e.target.checked)}
+                                                className="w-5 h-5 mt-0.5 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2 cursor-pointer"
+                                            />
+                                            <span className="ml-3 text-base text-gray-700 group-hover:text-gray-900 transition-colors">
+                                                I agree to Shopomatix&apos;s{' '}
+                                                <Link href="/terms" target="_blank" className="text-primary font-semibold hover:underline">
+                                                    Seller Terms & Conditions
+                                                </Link>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    {/* Accuracy Confirmation Checkbox */}
+                                    <div className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-primary/30 transition-all duration-300">
+                                        <label className="flex items-start cursor-pointer group">
+                                            <input
+                                                type="checkbox"
+                                                checked={confirmAccuracy}
+                                                onChange={(e) => setConfirmAccuracy(e.target.checked)}
+                                                className="w-5 h-5 mt-0.5 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2 cursor-pointer"
+                                            />
+                                            <span className="ml-3 text-base text-gray-700 group-hover:text-gray-900 transition-colors">
+                                                I confirm all information provided is accurate.
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Navigation Buttons */}
                             <div className="mt-12 flex items-center justify-between pt-8 border-t border-gray-100">
                                 {step > 1 ? (
@@ -557,7 +597,7 @@ export default function SellerRegistrationPage() {
                                 ) : (
                                     <button
                                         type="submit"
-                                        disabled={loading || (!devMode && (!gstVerified || !bankVerified))}
+                                        disabled={loading || (!devMode && (!gstVerified || !bankVerified || !agreeTerms || !confirmAccuracy))}
                                         className="flex items-center px-10 py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transform hover:-translate-y-0.5"
                                     >
                                         {loading ? (
@@ -573,12 +613,24 @@ export default function SellerRegistrationPage() {
                                 )}
                             </div>
                             
-                            {step === 4 && (!gstVerified || !bankVerified) && !devMode && (
-                                <div className="mt-4 text-center">
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>
-                                        Completion of GST and Bank Verification is mandatory
-                                    </span>
+                            {step === 4 && (!gstVerified || !bankVerified || !agreeTerms || !confirmAccuracy) && !devMode && (
+                                <div className="mt-4 text-center space-y-2">
+                                    {(!gstVerified || !bankVerified) && (
+                                        <div>
+                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>
+                                                Completion of GST and Bank Verification is mandatory
+                                            </span>
+                                        </div>
+                                    )}
+                                    {(!agreeTerms || !confirmAccuracy) && (
+                                        <div>
+                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>
+                                                Please accept terms and confirm information accuracy
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </form>
