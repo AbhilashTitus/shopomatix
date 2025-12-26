@@ -11,6 +11,9 @@ interface AuthContextType {
     register: (userData: Omit<User, 'id' | 'role'>, password: string) => Promise<void>;
     logout: () => void;
     isAuthenticated: boolean;
+    updateMembership: (tier: 'Free' | 'Silver' | 'Gold') => void;
+    deductCoins: (amount: number) => void;
+    addCoins: (amount: number) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -28,7 +31,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             const storedUser = localStorage.getItem('shopomatix_user');
             if (storedUser) {
                 try {
-                    setUser(JSON.parse(storedUser));
+                    const parsedUser = JSON.parse(storedUser);
+                    // Ensure defaults exist for legacy data
+                    if (!parsedUser.membershipTier || parsedUser.coins === undefined) {
+                        const updatedUser = {
+                            ...parsedUser,
+                            membershipTier: parsedUser.membershipTier || 'Free',
+                            coins: parsedUser.coins ?? 0
+                        };
+                        setUser(updatedUser);
+                        localStorage.setItem('shopomatix_user', JSON.stringify(updatedUser));
+                    } else {
+                        setUser(parsedUser);
+                    }
                 } catch (error) {
                     console.error('Error parsing stored user:', error);
                     localStorage.removeItem('shopomatix_user');
@@ -49,6 +64,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             name: 'Demo User',
             email: email,
             role: 'user',
+            membershipTier: 'Free',
+            coins: 0,
         };
 
         setUser(mockUser);
@@ -66,6 +83,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             ...userData,
             id: Math.random().toString(36).substr(2, 9),
             role: 'user',
+            membershipTier: 'Free',
+            coins: 0
         };
 
         setUser(newUser);
@@ -73,6 +92,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             localStorage.setItem('shopomatix_user', JSON.stringify(newUser));
         }
         setIsLoading(false);
+    };
+
+    const updateMembership = (tier: 'Free' | 'Silver' | 'Gold') => {
+        setUser((prev) => {
+            if (!prev) return null;
+            const updatedUser = { ...prev, membershipTier: tier };
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('shopomatix_user', JSON.stringify(updatedUser));
+            }
+            return updatedUser;
+        });
+    };
+
+    const deductCoins = (amount: number) => {
+        setUser((prev) => {
+            if (!prev || (prev.coins || 0) < amount) return prev;
+            const updatedUser = { ...prev, coins: (prev.coins || 0) - amount };
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('shopomatix_user', JSON.stringify(updatedUser));
+            }
+            return updatedUser;
+        });
+    };
+
+    const addCoins = (amount: number) => {
+        setUser((prev) => {
+            if (!prev) return null;
+            const updatedUser = { ...prev, coins: (prev.coins || 0) + amount };
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('shopomatix_user', JSON.stringify(updatedUser));
+            }
+            return updatedUser;
+        });
     };
 
     const logout = () => {
@@ -92,6 +144,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 register,
                 logout,
                 isAuthenticated: !!user,
+                updateMembership,
+                deductCoins,
+                addCoins,
             }}
         >
             {children}

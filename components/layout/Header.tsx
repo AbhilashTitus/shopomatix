@@ -34,9 +34,9 @@ export default function Header() {
       const sellerData = localStorage.getItem('sm_new_seller');
       setIsSeller(!!sellerData);
     };
-    
+
     checkSellerStatus();
-    
+
     // Listen for storage changes
     window.addEventListener('storage', checkSellerStatus);
     return () => window.removeEventListener('storage', checkSellerStatus);
@@ -80,6 +80,9 @@ export default function Header() {
 
             {/* Right Actions */}
             <div className="flex items-center space-x-6">
+              {/* Coin Balance */}
+
+
               {/* Cart Icon */}
               <Link
                 href="/cart"
@@ -114,9 +117,33 @@ export default function Header() {
                     onClick={() => setIsProfileOpen(!isProfileOpen)}
                     className="flex items-center space-x-2 text-gray-700 hover:text-primary focus:outline-none"
                   >
-                    <span className="text-sm font-medium">{user.name.split(' ')[0]}</span>
-                    <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-bold uppercase">
-                      {user.name.charAt(0)}
+                    <div className="flex items-center space-x-3 mr-1">
+                      {/* Coins Pill */}
+                      {user.coins !== undefined && (
+                        <div className="flex items-center space-x-1 bg-[#FFFBEA] border border-[#FFD700] px-3 py-1 rounded-full shadow-sm">
+                          <span className="text-xl">💰</span>
+                          <span className="text-[#B7791F] font-bold text-sm">{user.coins.toFixed(1)}</span>
+                        </div>
+                      )}
+
+                      {/* Membership Badge Pill */}
+                      {/* Membership Badge Pill */}
+                      <div className={`flex items-center space-x-1 px-3 py-1 rounded-full shadow-sm border ${(user.membershipTier || 'Free') === 'Gold' ? 'bg-yellow-50 border-yellow-200 text-yellow-800' :
+                        (user.membershipTier || 'Free') === 'Silver' ? 'bg-gray-100 border-gray-300 text-gray-700' :
+                          'bg-gray-50 border-gray-200 text-gray-600'
+                        }`}>
+                        <span className="text-lg">
+                          {(user.membershipTier || 'Free') === 'Gold' ? '🥇' : (user.membershipTier || 'Free') === 'Silver' ? '🥈' : '🏷️'}
+                        </span>
+                        <span className="font-bold text-sm tracking-wide">{user.membershipTier || 'Free'}</span>
+                      </div>
+
+                      <div className="flex items-center">
+                        <span className="text-sm font-medium mr-2">{user.name.split(' ')[0]}</span>
+                        <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-bold uppercase ring-2 ring-white shadow-sm">
+                          {user.name.charAt(0)}
+                        </div>
+                      </div>
                     </div>
                   </button>
 
@@ -131,6 +158,9 @@ export default function Header() {
                       </Link>
                       <Link href="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                         Orders
+                      </Link>
+                      <Link href="/membership" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        Membership Plans
                       </Link>
                       <button
                         onClick={() => {
@@ -238,9 +268,8 @@ export default function Header() {
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen ? 'max-h-[500px] opacity-100 py-4 border-t border-gray-100' : 'max-h-0 opacity-0'
-          }`}
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[500px] opacity-100 py-4 border-t border-gray-100' : 'max-h-0 opacity-0'
+            }`}
         >
           <nav className="flex flex-col space-y-2">
             {navigationItems.map((item) => (
@@ -253,7 +282,7 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            
+
             {/* Mobile Cart Button */}
             <Link
               href="/cart"
@@ -283,7 +312,7 @@ export default function Header() {
                 </span>
               )}
             </Link>
-            
+
             {/* User Profile Section */}
             {user ? (
               <div className="pt-2 mt-2 border-t border-gray-200">
@@ -294,10 +323,29 @@ export default function Header() {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-semibold text-gray-900">{user.name}</p>
-                    <p className="text-xs text-gray-500">{user.email}</p>
+                    <p className="text-xs text-gray-500 mb-2">{user.email}</p>
+
+                    {/* Mobile Stats Pills */}
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {user.coins !== undefined && (
+                        <div className="flex items-center space-x-1 bg-[#FFFBEA] border border-[#FFD700] px-2 py-0.5 rounded-full shadow-sm">
+                          <span className="text-sm">💰</span>
+                          <span className="text-[#B7791F] font-bold text-xs">{user.coins.toFixed(1)}</span>
+                        </div>
+                      )}
+
+                      {/* Membership Badge Pill */}
+                      <div className={`flex items-center space-x-1 px-2 py-0.5 rounded-full shadow-sm border ${(user.membershipTier || 'Free') === 'Gold' ? 'bg-yellow-50 border-yellow-200 text-yellow-800' :
+                          (user.membershipTier || 'Free') === 'Silver' ? 'bg-gray-100 border-gray-300 text-gray-700' :
+                            'bg-gray-50 border-gray-200 text-gray-600'
+                        }`}>
+                        <span className="text-sm">{(user.membershipTier || 'Free') === 'Gold' ? '🥇' : (user.membershipTier || 'Free') === 'Silver' ? '🥈' : '🏷️'}</span>
+                        <span className="font-bold text-xs tracking-wide">{user.membershipTier || 'Free'}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                
+
                 {/* Profile Links */}
                 <Link
                   href="/profile"
@@ -320,7 +368,7 @@ export default function Header() {
                   </svg>
                   <span>Your Profile</span>
                 </Link>
-                
+
                 <Link
                   href="/orders"
                   className="flex items-center space-x-3 text-[15px] text-gray-700 hover:text-primary hover:bg-gray-50 hover:pl-2 font-medium py-3 px-2 rounded-lg transition-all duration-300"
@@ -342,7 +390,18 @@ export default function Header() {
                   </svg>
                   <span>Your Orders</span>
                 </Link>
-                
+
+                <Link
+                  href="/membership"
+                  className="flex items-center space-x-3 text-[15px] text-gray-700 hover:text-primary hover:bg-gray-50 hover:pl-2 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.563.045.853.776.475 1.189l-4.169 4.381a.563.563 0 00-.153.554l1.18 5.666c.15.563-.591 1.056-1.07.662l-4.544-2.812a.563.563 0 00-.47 0l-4.544 2.811c-.48.335-1.222-.249-1.07-1.111l1.18-5.666a.563.563 0 00-.153-.554l-4.169-4.381c-.378-.413-.088-1.144.475-1.189l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                  </svg>
+                  <span>Membership Plans</span>
+                </Link>
+
                 <button
                   onClick={() => {
                     logout();

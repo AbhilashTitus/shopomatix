@@ -24,8 +24,8 @@ interface ShippingAddress {
 }
 
 export default function CheckoutPage() {
-  const { items, cartTotal, clearCart } = useCart();
-  const { user } = useAuth();
+  const { items, cartTotal, clearCart, discount } = useCart();
+  const { user, deductCoins } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [shippingAddress, setShippingAddress] = useState<ShippingAddress>({
@@ -119,6 +119,11 @@ export default function CheckoutPage() {
         order_id: order.id,
         handler: function (response: any) {
           // Payment successful
+          // Deduct coins if used
+          if (discount > 0) {
+            deductCoins(discount); // 1 Coin = ₹1
+          }
+
           // Store payment details in sessionStorage for the success page
           if (typeof window !== 'undefined') {
             sessionStorage.setItem('payment_success', JSON.stringify({
@@ -127,7 +132,7 @@ export default function CheckoutPage() {
               timestamp: Date.now()
             }));
           }
-          
+
           // Redirect to success page
           const successUrl = `/order-success?payment_id=${response.razorpay_payment_id}&order_id=${response.razorpay_order_id}`;
           router.replace(successUrl);
@@ -141,7 +146,7 @@ export default function CheckoutPage() {
           color: '#e74c37',
         },
         modal: {
-          ondismiss: function() {
+          ondismiss: function () {
             setLoading(false);
           }
         },
@@ -156,14 +161,14 @@ export default function CheckoutPage() {
       };
 
       const razorpay = new window.Razorpay(options);
-      
+
       // Add error handling for payment failures
       razorpay.on('payment.failed', function (response: any) {
         console.error('Payment failed:', response.error);
         alert(`Payment failed: ${response.error.description || 'Please try again'}`);
         setLoading(false);
       });
-      
+
       razorpay.open();
     } catch (error) {
       console.error('Payment error:', error);
@@ -189,7 +194,7 @@ export default function CheckoutPage() {
             <div className="lg:col-span-7">
               <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-6">Shipping Address</h2>
-                
+
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div className="sm:col-span-2">
                     <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
