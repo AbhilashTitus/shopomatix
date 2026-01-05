@@ -10,12 +10,9 @@ export async function GET(request: Request) {
         return NextResponse.json({ status: 'Failure', message: 'Account Number and IFSC are required' }, { status: 400 });
     }
 
+    // Hardcoded eKYC credentials for immediate deployment
     const username = process.env.EKYC_API_USERNAME || '7676717667';
-    const token = process.env.EKYC_API_TOKEN;
-
-    if (!token) {
-        return NextResponse.json({ status: 'Failure', message: 'Server configuration error: Missing API Token' }, { status: 500 });
-    }
+    const token = process.env.EKYC_API_TOKEN || '5cbf9f97ff8cd6ab1f1d48ce95a7adf9';
 
     const orderid = Math.random().toString(36).substring(7);
     const apiUrl = `https://connect.ekychub.in/v3/verification/bank_verification_simple?username=${username}&token=${token}&account_number=${accountNumber}&ifsc=${ifsc}&orderid=${orderid}`;

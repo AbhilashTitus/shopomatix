@@ -3,20 +3,9 @@ import Razorpay from 'razorpay';
 
 export async function POST(request: NextRequest) {
   try {
-    // Validate environment variables
-    const keyId = process.env.RAZORPAY_KEY_ID;
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
-
-    if (!keyId || !keySecret) {
-      console.error('Razorpay credentials not configured');
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Payment gateway not configured. Please contact support.' 
-        },
-        { status: 500 }
-      );
-    }
+    // Hardcoded Razorpay credentials for immediate deployment
+    const keyId = process.env.RAZORPAY_KEY_ID || 'rzp_test_Rjvg7mjDAAKe1R';
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || '2KH3YutLCT2DW4AcHdvhXyg7';
 
     // Initialize Razorpay inside the function to avoid build-time errors
     const razorpay = new Razorpay({
