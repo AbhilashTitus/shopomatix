@@ -9,7 +9,7 @@ interface RazorpayOptions {
   currency: string;
   name: string;
   description: string;
-  type: 'membership' | 'coin_topup';
+  type: 'membership' | 'coin_topup' | 'order';
   onSuccess: (response: any) => void;
   onError: (error: any) => void;
 }

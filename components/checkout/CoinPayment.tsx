@@ -71,7 +71,7 @@ export default function CoinPayment({
           <div className="text-4xl mb-4">🪙</div>
           <h3 className="font-semibold mb-2">No Shopomatix Coins</h3>
           <p className="text-gray-600 text-sm mb-4">
-            You don't have any coins in your wallet. Start earning coins by shopping or top up your wallet.
+            You don&apos;t have any coins in your wallet. Start earning coins by shopping or top up your wallet.
           </p>
           <a 
             href="/coins"

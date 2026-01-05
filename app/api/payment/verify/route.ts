@@ -55,8 +55,8 @@ export async function POST(request: NextRequest) {
     // Process based on payment type
     if (type === 'membership') {
       // Handle membership upgrade
-      const planType = order.notes.planType;
-      const planName = order.notes.planName;
+      const planType = order.notes?.planType;
+      const planName = order.notes?.planName;
       
       // Here you would update the user's membership in your database
       console.log(`Upgrading user ${userId} to ${planType} membership`);
@@ -80,14 +80,14 @@ export async function POST(request: NextRequest) {
         data: {
           paymentId: razorpay_payment_id,
           orderId: razorpay_order_id,
-          amount: payment.amount / 100, // Convert paise to rupees
+          amount: Number(payment.amount) / 100, // Convert paise to rupees
         }
       });
     } else if (type === 'coin_topup') {
       // Handle coin top-up
-      const coinsToAdd = order.notes.coinsToAdd ? parseInt(order.notes.coinsToAdd) : 0;
-      const bonusCoins = order.notes.bonusCoins ? parseInt(order.notes.bonusCoins) : 0;
-      const totalCoins = order.notes.totalCoins ? parseInt(order.notes.totalCoins) : 0;
+      const coinsToAdd = order.notes?.coinsToAdd ? parseInt(String(order.notes.coinsToAdd)) : 0;
+      const bonusCoins = order.notes?.bonusCoins ? parseInt(String(order.notes.bonusCoins)) : 0;
+      const totalCoins = order.notes?.totalCoins ? parseInt(String(order.notes.totalCoins)) : 0;
       
       // Here you would add coins to user's wallet in your database
       console.log(`Adding ${totalCoins} coins to user ${userId} wallet`);
