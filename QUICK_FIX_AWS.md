@@ -30,14 +30,19 @@ NEXT_PUBLIC_RAZORPAY_KEY_ID = rzp_test_Rjvg7mjDAAKe1R
 ssh -i your-key.pem ubuntu@your-server-ip
 
 # Go to your app folder
-cd /path/to/shopomatix
+cd ~/shopomatix
 
-# Create .env.local file
-cat > .env.local << EOF
+# Create .env.local file with ALL required variables
+cat > .env.local << 'EOF'
 RAZORPAY_KEY_ID=rzp_test_Rjvg7mjDAAKe1R
 RAZORPAY_KEY_SECRET=2KH3YutLCT2DW4AcHdvhXyg7
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_Rjvg7mjDAAKe1R
+EKYC_API_USERNAME=7676717667
+EKYC_API_TOKEN=5cbf9f97ff8cd6ab1f1d48ce95a7adf9
 EOF
+
+# Verify the file was created correctly
+cat .env.local
 
 # Restart your app
 pm2 restart all
