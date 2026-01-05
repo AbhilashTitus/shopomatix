@@ -8,8 +8,8 @@ import Footer from '@/components/layout/Footer';
 import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
-    const [email, setEmail] = useState('demo@shopomatix.com');
-    const [password, setPassword] = useState('demo123');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const { login } = useAuth();
     const router = useRouter();
