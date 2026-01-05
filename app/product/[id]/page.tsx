@@ -5,14 +5,18 @@ import Link from 'next/link';
 import { notFound, useParams } from 'next/navigation';
 import { products as staticProducts } from '@/data/products';
 import { useCart } from '@/context/CartContext';
+import { useBuyNow } from '@/context/BuyNowContext';
 import { useState, useEffect } from 'react';
 import { Product } from '@/components/types';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { useRouter } from 'next/navigation';
 
 export default function ProductDetailPage() {
     const params = useParams();
     const { addToCart } = useCart();
+    const { setBuyNowItem } = useBuyNow();
+    const router = useRouter();
     const [qty, setQty] = useState(1);
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
@@ -286,9 +290,16 @@ export default function ProductDetailPage() {
                                         Add to Cart
                                     </button>
                                     <button
+                                        onClick={() => {
+                                            setBuyNowItem(product, qty);
+                                            router.push('/buy-now');
+                                        }}
                                         disabled={!product.inStock}
-                                        className="flex-1 bg-white border-2 border-primary text-primary rounded-lg py-3.5 px-6 text-base font-bold hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="flex-1 bg-white border-2 border-primary text-primary rounded-lg py-3.5 px-6 text-base font-bold hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                     >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
                                         Buy Now
                                     </button>
                                 </div>

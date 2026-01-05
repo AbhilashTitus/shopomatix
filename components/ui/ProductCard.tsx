@@ -2,16 +2,27 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ProductCardProps } from '@/components/types';
 import { useCart } from '@/context/CartContext';
+import { useBuyNow } from '@/context/BuyNowContext';
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
+  const { setBuyNowItem } = useBuyNow();
+  const router = useRouter();
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
+  };
+
+  const handleBuyNow = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setBuyNowItem(product, 1);
+    router.push('/buy-now');
   };
 
   const discount = product.originalPrice && product.price
@@ -46,14 +57,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </Link>
 
-        {/* Quick Add Button (visible on hover) */}
+        {/* Quick Buy Button (visible on hover) */}
         <button
-          onClick={handleAddToCart}
-          className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20 bg-white text-dark p-2 rounded-full shadow-lg hover:bg-primary hover:text-white focus:outline-none"
-          title="Add to Cart"
+          onClick={handleBuyNow}
+          className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-secondary focus:outline-none"
+          title="Buy Now"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </button>
 
@@ -84,18 +95,37 @@ export default function ProductCard({ product }: ProductCardProps) {
               )}
             </div>
 
-            <button
-              onClick={handleAddToCart}
-              className="w-full py-2 rounded-lg border border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-colors uppercase tracking-wide md:hidden"
-            >
-              Add to Cart
-            </button>
-            <button
-              onClick={handleAddToCart}
-              className="hidden md:block w-full py-2 rounded-lg bg-gray-50 text-gray-800 font-medium text-sm hover:bg-primary hover:text-white transition-colors"
-            >
-              Add to Cart
-            </button>
+            {/* Mobile Buttons */}
+            <div className="flex gap-2 md:hidden">
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 py-2 rounded-lg border border-primary text-primary font-semibold text-xs hover:bg-primary hover:text-white transition-colors uppercase tracking-wide"
+              >
+                Add to Cart
+              </button>
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 py-2 rounded-lg bg-primary text-white font-semibold text-xs hover:bg-secondary transition-colors uppercase tracking-wide"
+              >
+                Buy Now
+              </button>
+            </div>
+
+            {/* Desktop Buttons */}
+            <div className="hidden md:flex flex-col gap-2">
+              <button
+                onClick={handleBuyNow}
+                className="w-full py-2 rounded-lg bg-primary text-white font-medium text-sm hover:bg-secondary transition-colors"
+              >
+                Buy Now
+              </button>
+              <button
+                onClick={handleAddToCart}
+                className="w-full py-2 rounded-lg bg-gray-50 text-gray-800 font-medium text-sm hover:bg-gray-100 transition-colors"
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
       </div>
