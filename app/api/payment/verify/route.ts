@@ -5,10 +5,22 @@ import Razorpay from 'razorpay';
 // POST /api/payment/verify - Verify Razorpay payment
 export async function POST(request: NextRequest) {
   try {
+    // Validate environment variables
+    const keyId = process.env.RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+
+    if (!keyId || !keySecret) {
+      console.error('Razorpay credentials not configured');
+      return NextResponse.json(
+        { success: false, error: 'Payment gateway not configured. Please contact support.' },
+        { status: 500 }
+      );
+    }
+
     // Initialize Razorpay inside the function to avoid build-time errors
     const razorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID || '',
-      key_secret: process.env.RAZORPAY_KEY_SECRET || '',
+      key_id: keyId,
+      key_secret: keySecret,
     });
 
     const body = await request.json();
@@ -30,7 +42,7 @@ export async function POST(request: NextRequest) {
     // Verify signature
     const sign = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSign = crypto
-      .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET!)
+      .createHmac('sha256', keySecret)
       .update(sign.toString())
       .digest('hex');
 
