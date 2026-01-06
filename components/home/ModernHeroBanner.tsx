@@ -15,7 +15,7 @@ export default function ModernHeroBanner({ products }: ModernHeroBannerProps) {
   // Filter products between ₹100-200
   const budgetProducts = products.filter(
     (product) => product.price >= 100 && product.price <= 200
-  ).slice(0, 6);
+  ).slice(2, 8);
 
   return (
     <section className="relative bg-white overflow-hidden">
