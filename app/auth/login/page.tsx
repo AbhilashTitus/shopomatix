@@ -52,7 +52,7 @@ export default function LoginPage() {
                         <div className="space-y-4">
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Email or Mobile Number
+                                    Email Address
                                 </label>
                                 <input
                                     id="email"
@@ -99,12 +99,12 @@ export default function LoginPage() {
                             </div>
 
                             <div className="text-sm">
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/auth/forgot-password"
                                     className="font-medium text-primary hover:text-secondary transition-colors"
                                 >
                                     Forgot password?
-                                </a>
+                                </Link>
                             </div>
                         </div>
 

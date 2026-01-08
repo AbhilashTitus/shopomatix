@@ -21,7 +21,7 @@ export default function CancellationPolicyPage() {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              
+
               <div className="mb-10">
                 <p className="text-gray-700 leading-relaxed mb-4">
                   At Shopomatix, we understand that plans change. This Cancellation Policy explains how you can cancel your order and the conditions that apply.
@@ -30,7 +30,7 @@ export default function CancellationPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">1. Order Cancellation by Customer</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">1.1 Before Dispatch</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   You can cancel your order free of charge before it is dispatched. To cancel:
@@ -78,7 +78,7 @@ export default function CancellationPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">3. Refund for Cancelled Orders</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">3.1 Refund Timeline</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Refunds for cancelled orders will be processed as follows:
@@ -123,7 +123,7 @@ export default function CancellationPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> 1800-123-4567</p>
+                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

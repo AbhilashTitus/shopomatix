@@ -23,7 +23,7 @@ export default function RefundPolicyPage() {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              
+
               {/* Introduction */}
               <div className="mb-10">
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -34,7 +34,7 @@ export default function RefundPolicyPage() {
               {/* Section 1 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">1. Return Eligibility</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">1.1 General Return Window</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Most products can be returned within 7 days of delivery. Electronics and appliances have a 3-day return window. The return period starts from the date of delivery as confirmed by our delivery partner.
@@ -70,7 +70,7 @@ export default function RefundPolicyPage() {
               {/* Section 2 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">2. Return Process</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">2.1 Initiating a Return</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   To initiate a return:
@@ -102,7 +102,7 @@ export default function RefundPolicyPage() {
               {/* Section 3 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">3. Refund Process</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">3.1 Refund Approval</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   If the returned product passes our quality check, your refund will be approved. You will receive a confirmation email with refund details.
@@ -147,7 +147,7 @@ export default function RefundPolicyPage() {
               {/* Section 5 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">5. Damaged or Defective Products</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">5.1 Reporting Issues</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   If you receive a damaged, defective, or incorrect product, please report it within 24 hours of delivery by:
@@ -204,7 +204,7 @@ export default function RefundPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> 1800-123-4567</p>
+                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

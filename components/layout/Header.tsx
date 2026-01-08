@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HeaderProps, NavItem } from '@/components/types';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
@@ -29,7 +29,7 @@ export default function Header() {
   const { cartCount } = useCart();
 
   // Check if user is a seller
-  useState(() => {
+  useEffect(() => {
     const checkSellerStatus = () => {
       const sellerData = localStorage.getItem('sm_new_seller');
       setIsSeller(!!sellerData);
@@ -40,7 +40,7 @@ export default function Header() {
     // Listen for storage changes
     window.addEventListener('storage', checkSellerStatus);
     return () => window.removeEventListener('storage', checkSellerStatus);
-  });
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -268,7 +268,7 @@ export default function Header() {
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[500px] opacity-100 py-4 border-t border-gray-100' : 'max-h-0 opacity-0'
+          className={`lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[calc(100vh-80px)] opacity-100 py-4 border-t border-gray-100' : 'max-h-0 opacity-0'
             }`}
         >
           <nav className="flex flex-col space-y-2">
@@ -336,8 +336,8 @@ export default function Header() {
 
                       {/* Membership Badge Pill */}
                       <div className={`flex items-center space-x-1 px-2 py-0.5 rounded-full shadow-sm border ${(user.membershipTier || 'Free') === 'Gold' ? 'bg-yellow-50 border-yellow-200 text-yellow-800' :
-                          (user.membershipTier || 'Free') === 'Silver' ? 'bg-gray-100 border-gray-300 text-gray-700' :
-                            'bg-gray-50 border-gray-200 text-gray-600'
+                        (user.membershipTier || 'Free') === 'Silver' ? 'bg-gray-100 border-gray-300 text-gray-700' :
+                          'bg-gray-50 border-gray-200 text-gray-600'
                         }`}>
                         <span className="text-sm">{(user.membershipTier || 'Free') === 'Gold' ? '🥇' : (user.membershipTier || 'Free') === 'Silver' ? '🥈' : '🏷️'}</span>
                         <span className="font-bold text-xs tracking-wide">{user.membershipTier || 'Free'}</span>

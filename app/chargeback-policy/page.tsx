@@ -21,7 +21,7 @@ export default function ChargebackPolicyPage() {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              
+
               <div className="mb-10">
                 <p className="text-gray-700 leading-relaxed mb-4">
                   This Chargeback Policy explains how Shopomatix handles payment disputes and chargebacks initiated through banks or payment providers.
@@ -56,8 +56,7 @@ export default function ChargebackPolicyPage() {
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Email: support@shopomatix.com</li>
-                  <li>Phone: 1800-123-4567</li>
-                  <li>Live Chat: Available on our website</li>
+                  <li>Phone: +91 7676717667</li>
                 </ul>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Resolving issues directly with us is typically faster than the chargeback process, which can take 60-90 days.
@@ -66,7 +65,7 @@ export default function ChargebackPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">4. Chargeback Process</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">4.1 Customer Initiates Chargeback</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   If you decide to file a chargeback, contact your bank or card issuer and provide them with:
@@ -100,7 +99,7 @@ export default function ChargebackPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">5. Responsibility and Liability</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">5.1 Marketplace Model</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   As a marketplace platform, responsibility for chargebacks is distributed as follows:
@@ -120,7 +119,7 @@ export default function ChargebackPolicyPage() {
                 <p className="text-gray-700 leading-relaxed mb-4">
                   In a marketplace transaction, the seller shall bear full responsibility and financial liability for all chargebacks, refunds, and fraud-related issues arising from their products or transactions on the Shopomatix platform.
                 </p>
-                
+
                 <p className="text-gray-700 leading-relaxed mb-4">
                   <strong>Seller Responsibilities:</strong>
                 </p>
@@ -213,7 +212,7 @@ export default function ChargebackPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> 1800-123-4567</p>
+                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

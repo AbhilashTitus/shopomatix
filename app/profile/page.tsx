@@ -8,50 +8,19 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export default function ProfilePage() {
-  const { user, isLoading, logout } = useAuth();
+  const { user, isLoading } = useAuth();
   const router = useRouter();
-  const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-  });
 
   useEffect(() => {
     if (!isLoading && !user) {
       router.push('/auth/login');
     }
-    if (user) {
-      setFormData({
-        name: user.name,
-        email: user.email,
-        mobile: user.mobile || '',
-      });
-    }
   }, [user, isLoading, router]);
-
-  const handleSave = () => {
-    // In a real app, you would update the user data via API
-    console.log('Saving profile data:', formData);
-    setIsEditing(false);
-    // You could update the user context here
-  };
-
-  const handleCancel = () => {
-    if (user) {
-      setFormData({
-        name: user.name,
-        email: user.email,
-        mobile: user.mobile || '',
-      });
-    }
-    setIsEditing(false);
-  };
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -63,162 +32,89 @@ export default function ProfilePage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-            <div className="flex items-center space-x-4">
-              <div className="h-20 w-20 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold">
-                {user.name.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
-                <p className="text-gray-600">{user.email}</p>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
-                  {user.role === 'user' ? 'Customer' : user.role}
-                </span>
-              </div>
-            </div>
-          </div>
+      <div className="min-h-screen bg-[#F8F9FA] relative overflow-hidden flex flex-col">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]" />
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Profile Information */}
-            <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Profile Information</h2>
-                  {!isEditing ? (
-                    <button
-                      onClick={() => setIsEditing(true)}
-                      className="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white transition-colors"
-                    >
-                      Edit Profile
-                    </button>
-                  ) : (
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={handleSave}
-                        className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-secondary transition-colors"
-                      >
-                        Save
-                      </button>
-                      <button
-                        onClick={handleCancel}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-                      >
-                        Cancel
-                      </button>
+        <div className="flex-grow flex items-center justify-center py-12 px-4 relative z-10">
+          <div className="max-w-2xl w-full">
+            {/* Main Profile Card */}
+            <div className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white/50 overflow-hidden">
+              {/* Card Header with Gradient */}
+              <div className="h-48 bg-gradient-to-r from-primary via-primary/90 to-secondary relative">
+                <div className="absolute -bottom-16 left-1/2 -translate-x-1/2">
+                  <div className="relative">
+                    <div className="h-32 w-32 rounded-3xl bg-white p-1.5 shadow-2xl rotate-3 transform transition-transform hover:rotate-0 duration-500">
+                      <div className="h-full w-full rounded-[1.25rem] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center text-primary text-4xl font-black">
+                        {user.name.charAt(0).toUpperCase()}
+                      </div>
                     </div>
-                  )}
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Full Name
-                    </label>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      />
-                    ) : (
-                      <p className="text-gray-900">{user.name}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address
-                    </label>
-                    {isEditing ? (
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      />
-                    ) : (
-                      <p className="text-gray-900">{user.email}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Mobile Number
-                    </label>
-                    {isEditing ? (
-                      <input
-                        type="tel"
-                        value={formData.mobile}
-                        onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                        placeholder="Enter your mobile number"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      />
-                    ) : (
-                      <p className="text-gray-900">{user.mobile || 'Not provided'}</p>
-                    )}
+                    <div className="absolute -bottom-2 -right-2 h-8 w-8 bg-green-500 border-4 border-white rounded-full shadow-lg" />
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Quick Actions */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-                <div className="space-y-3">
-                  <button
-                    onClick={() => router.push('/orders')}
-                    className="w-full flex items-center justify-between p-3 text-left border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
-                      <span className="text-sm font-medium text-gray-900">My Orders</span>
-                    </div>
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+              {/* Profile Details */}
+              <div className="pt-20 pb-12 px-8 text-center">
+                <div className="mb-8">
+                  <h1 className="text-3xl font-black text-gray-900 mb-2 tracking-tight">{user.name}</h1>
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-full">
+                      {user.role === 'user' ? 'Member' : user.role}
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                    <span className="text-sm font-medium text-gray-500 italic">{user.email}</span>
+                  </div>
+                </div>
 
-                  <button
-                    onClick={() => router.push('/cart')}
-                    className="w-full flex items-center justify-between p-3 text-left border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 11-4 0v-6m4 0V9a2 2 0 10-4 0v4.01" />
-                      </svg>
-                      <span className="text-sm font-medium text-gray-900">Shopping Cart</span>
+                {/* Info Grid */}
+                <div className="grid grid-cols-1 gap-4 max-w-md mx-auto">
+                  <div className="group p-5 bg-gray-50/50 hover:bg-white rounded-2xl border border-transparent hover:border-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200/50">
+                    <div className="flex items-center space-x-4">
+                      <div className="p-3 bg-white rounded-xl shadow-sm text-primary group-hover:scale-110 transition-transform duration-300">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Full Name</p>
+                        <p className="text-sm font-bold text-gray-800">{user.name}</p>
+                      </div>
                     </div>
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+                  </div>
 
-                  <button
-                    onClick={() => router.push('/shop')}
-                    className="w-full flex items-center justify-between p-3 text-left border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                      <span className="text-sm font-medium text-gray-900">Continue Shopping</span>
+                  <div className="group p-5 bg-gray-50/50 hover:bg-white rounded-2xl border border-transparent hover:border-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200/50">
+                    <div className="flex items-center space-x-4">
+                      <div className="p-3 bg-white rounded-xl shadow-sm text-primary group-hover:scale-110 transition-transform duration-300">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Email Address</p>
+                        <p className="text-sm font-bold text-gray-800">{user.email}</p>
+                      </div>
                     </div>
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+                  </div>
+
+                  <div className="group p-5 bg-gray-50/50 hover:bg-white rounded-2xl border border-transparent hover:border-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200/50">
+                    <div className="flex items-center space-x-4">
+                      <div className="p-3 bg-white rounded-xl shadow-sm text-primary group-hover:scale-110 transition-transform duration-300">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Mobile Number</p>
+                        <p className="text-sm font-bold text-gray-800">{user.mobile || 'Not provided'}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Account Settings */}
-              {/* Account Settings Removed */}
             </div>
           </div>
         </div>

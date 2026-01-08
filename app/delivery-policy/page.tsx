@@ -21,7 +21,7 @@ export default function DeliveryPolicyPage() {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              
+
               <div className="mb-10">
                 <p className="text-gray-700 leading-relaxed mb-4">
                   This Delivery Policy outlines the terms and conditions for the delivery of products purchased through Shopomatix. Please read this policy carefully before placing an order.
@@ -55,7 +55,7 @@ export default function DeliveryPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">3. Delivery Timeframes</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">3.1 Order Processing Time</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Orders are processed within 1-2 business days from the date of order confirmation. Business days exclude Sundays and public holidays. Orders placed on weekends or holidays will be processed on the next business day.
@@ -81,7 +81,7 @@ export default function DeliveryPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">4. Delivery Slots and Scheduling</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">4.1 Standard Delivery</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Standard deliveries are typically made between 9:00 AM to 7:00 PM on business days. The delivery partner will attempt delivery during this window based on their route optimization.
@@ -108,7 +108,7 @@ export default function DeliveryPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">5. Delivery Attempts and Procedures</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">5.1 Delivery Attempts</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Our delivery partner will make up to 3 delivery attempts:
@@ -141,7 +141,7 @@ export default function DeliveryPolicyPage() {
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Contacting the delivery partner directly (number provided in SMS)</li>
-                  <li>Calling our customer support at 1800-123-4567</li>
+                  <li>Calling our customer support at +91 7676717667</li>
                   <li>Using the &quot;Reschedule Delivery&quot; option in your order tracking page</li>
                 </ul>
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -151,7 +151,7 @@ export default function DeliveryPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">6. Delivery Verification and Acceptance</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">6.1 Identity Verification</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   For high-value orders (above ₹10,000), the delivery partner may request identity verification. Please keep a valid government-issued ID ready (Aadhaar, PAN Card, Driving License, Passport).
@@ -195,7 +195,7 @@ export default function DeliveryPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">7. Special Delivery Services</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">7.1 Installation Services</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   For select products (appliances, furniture, electronics), we offer installation services:
@@ -249,7 +249,7 @@ export default function DeliveryPolicyPage() {
 
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">9. Delivery Issues and Resolution</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">9.1 Non-Delivery</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   If your order shows as delivered but you haven&apos;t received it:
@@ -333,7 +333,7 @@ export default function DeliveryPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> 1800-123-4567</p>
+                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
                   <p className="text-gray-700 mb-2"><strong>WhatsApp:</strong> +91 9999999999</p>
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
