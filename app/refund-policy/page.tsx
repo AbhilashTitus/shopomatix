@@ -52,7 +52,7 @@ export default function RefundPolicyPage() {
                   <li>Product must not be on the non-returnable items list</li>
                 </ul>
 
-                <h3 className="text-xl font-semibold text-dark mb-3 mt-6">1.3 Non-Returnable Items</h3>
+                {/* <h3 className="text-xl font-semibold text-dark mb-3 mt-6">1.3 Non-Returnable Items</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   The following items cannot be returned:
                 </p>
@@ -64,7 +64,7 @@ export default function RefundPolicyPage() {
                   <li>Customized or personalized products</li>
                   <li>Digital products and gift cards</li>
                   <li>Products marked as &quot;non-returnable&quot; at the time of purchase</li>
-                </ul>
+                </ul> */}
               </div>
 
               {/* Section 2 */}
