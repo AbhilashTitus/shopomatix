@@ -23,7 +23,7 @@ export default function TermsPage() {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              
+
               {/* Section 1 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">1. Acceptance of Terms & Legal Compliance</h2>
@@ -59,7 +59,7 @@ export default function TermsPage() {
               {/* Section 5 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">5. Payment Terms</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">5.1 Accepted Payment Methods</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   We accept payments exclusively through UPI (Unified Payments Interface). All transactions are processed via NPCI-authorized UPI applications and compliant payment service providers that adhere to RBI regulations and applicable PCI DSS security standards. By initiating a payment, you agree to use a valid UPI ID or UPI-linked bank account that belongs to you and to provide accurate and complete payment information during checkout.
@@ -111,7 +111,7 @@ export default function TermsPage() {
               {/* Section 6 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">6. Seller Onboarding and Marketplace Operations</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">6.1 Seller Registration and KYC Verification</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Shopomatix operates as a marketplace platform connecting buyers with registered local sellers/merchants. All sellers must complete a mandatory onboarding process including business registration, KYC verification, address proof, product compliance documentation, and bank account verification. This process typically takes 2-5 business days.
@@ -148,7 +148,7 @@ export default function TermsPage() {
               {/* Section 8 */}
               <div className="mb-10">
                 <h2 className="text-2xl font-bold text-dark mb-4">8. Returns, Refunds, and Chargebacks</h2>
-                
+
                 <h3 className="text-xl font-semibold text-dark mb-3 mt-6">8.1 Returns and Refunds</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Returns and refunds are subject to our Refund Policy. Perishable items, personal care items, and certain other products may not be eligible for return. Please refer to our detailed Refund Policy for complete information.
@@ -208,7 +208,7 @@ export default function TermsPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                   <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
+
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

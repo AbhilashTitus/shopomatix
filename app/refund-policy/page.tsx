@@ -204,7 +204,7 @@ export default function RefundPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
+
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

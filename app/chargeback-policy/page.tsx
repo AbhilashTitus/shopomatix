@@ -56,7 +56,7 @@ export default function ChargebackPolicyPage() {
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Email: support@shopomatix.com</li>
-                  <li>Phone: +91 7676717667</li>
+
                 </ul>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Resolving issues directly with us is typically faster than the chargeback process, which can take 60-90 days.
@@ -198,7 +198,7 @@ export default function ChargebackPolicyPage() {
                   Before resorting to chargebacks, consider these alternatives:
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
-                  <li><strong>Customer Support:</strong> Contact our support team for immediate assistance</li>
+                  <li><strong>Email Support:</strong> Contact our support team for assistance</li>
                   <li><strong>Return/Refund:</strong> Use our standard return and refund process</li>
                   <li><strong>Replacement:</strong> Request a replacement for defective products</li>
                   <li><strong>Store Credit:</strong> Accept store credit for future purchases</li>
@@ -212,7 +212,7 @@ export default function ChargebackPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
+
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

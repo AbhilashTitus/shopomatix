@@ -141,7 +141,7 @@ export default function DeliveryPolicyPage() {
                 </p>
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed mb-4 space-y-2 ml-4">
                   <li>Contacting the delivery partner directly (number provided in SMS)</li>
-                  <li>Calling our customer support at +91 7676717667</li>
+
                   <li>Using the &quot;Reschedule Delivery&quot; option in your order tracking page</li>
                 </ul>
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -333,8 +333,8 @@ export default function DeliveryPolicyPage() {
                 </p>
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                   <p className="text-gray-700 mb-2"><strong>Email:</strong> support@shopomatix.com</p>
-                  <p className="text-gray-700 mb-2"><strong>Phone:</strong> +91 7676717667</p>
-                  <p className="text-gray-700 mb-2"><strong>WhatsApp:</strong> +91 9999999999</p>
+
+
                   <p className="text-gray-700"><strong>Address:</strong> Nexfora Solutions Pvt Ltd, 18/1 4th Cross, 2nd Floor, Rahmath Nagar, R.T. Nagar, Bangalore, Karnataka, India - 560032</p>
                 </div>
               </div>

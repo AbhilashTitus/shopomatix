@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     }
 
     // Hardcoded eKYC credentials for immediate deployment
-    const username = process.env.EKYC_API_USERNAME || '7676717667';
+    const username = process.env.EKYC_API_USERNAME;
     const token = process.env.EKYC_API_TOKEN || '5cbf9f97ff8cd6ab1f1d48ce95a7adf9';
 
     const orderid = Math.random().toString(36).substring(7);
