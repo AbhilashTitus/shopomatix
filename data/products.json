@@ -1219,6 +1219,89 @@
       "id": "p_mob_004",
       "rating": 3.9,
       "reviewCount": 267
+    },
+    {
+      "name": "FUR JADEN Pro Series Smart Tech Anti-Theft Laptop Backpack With USB-A and USB-C Type Charging Port for Men & Women For Business Professionals & College Students",
+      "price": 2999,
+      "originalPrice": 7000,
+      "discountPercentage": 57,
+      "image": "/uploads/1773037096332_0qij8z5zmto.png",
+      "images": [],
+      "category": "electronics",
+      "description": "Fur Jaden Pro Series: Introducing our most premium, stylish and functional range of travel accessories. We craft signature pieces that are young, vibrant and fashionable, and yet a celebration of timeless style, luxe and sophistication.",
+      "rating": 4,
+      "reviewCount": 850,
+      "seller": "FUR JADEN",
+      "inStock": true,
+      "tags": [
+        {
+          "type": "best-seller",
+          "label": "Best Seller"
+        }
+      ],
+      "link": "/product/p_1773037131263_9xi1lvtav",
+      "id": "p_1773037131263_9xi1lvtav"
+    },
+    {
+      "name": "ICON The Iconic Laptop Backpack 30L | Premium Polyester, Fits 15.6\" Laptops | USB Charging, Luggage Sleeve, Numbered Lock & Hidden Pocket | Water-Resistant, Multipurpose Laptop Bag",
+      "price": 4499,
+      "originalPrice": 9000,
+      "discountPercentage": 50,
+      "image": "/uploads/1773037247670_sk8dkgqhqq.png",
+      "images": [],
+      "category": "electronics",
+      "description": "Spacious 30L Capacity – Designed to fit your everyday essentials and more, this 30-liter backpack is perfect for work, travel, college, or daily commutes.\nDedicated Laptop Compartment – Padded sleeve fits laptops up to 15.6\", providing secure and shock-resistant protection for your tech on the go.",
+      "rating": 4,
+      "reviewCount": 50,
+      "seller": "ICON",
+      "inStock": true,
+      "tags": [
+        {
+          "type": "new-arrival",
+          "label": "New Arrival"
+        }
+      ],
+      "link": "/product/p_1773037268666_6vhpqzmez",
+      "id": "p_1773037268666_6vhpqzmez"
+    },
+    {
+      "name": "URBAN TRIBE Gamzo 35L Gamers Laptop Backpack for every Genz Z | Fits 17 Inch Laptop | RGB-Ready Gaming Backpack | Anti-Theft, RFID Safe, Shockproof, Weather-Resistant | USB-C Charging, Travel Bag",
+      "price": 3299,
+      "originalPrice": 6999,
+      "discountPercentage": 53,
+      "image": "/uploads/1773037409244_qj3v8i04t9.png",
+      "images": [],
+      "category": "electronics",
+      "description": "Built for Gamers & Gen-Z Professionals – A modern 35L gaming laptop backpack designed for gamers, creators, office professionals, and travelers who want performance, security, and minimal style in one everyday carry.\nPremium Weather-Resistant Fabric – Made with durable Bolt & Crimson Dobby fabric that resists light rain, daily wear, and rough use, ensuring long-lasting protection for your gaming gear and tech essentials.",
+      "rating": 4.2,
+      "reviewCount": 69,
+      "seller": "URBAN TRIBE",
+      "inStock": true,
+      "tags": [],
+      "link": "/product/p_1773037422477_kohcerxyj",
+      "id": "p_1773037422477_kohcerxyj"
+    },
+    {
+      "name": "Urban Jungle by Safari, The Venture, Unisex backpack for Work and Travel | Premium Fabric and Water Resistant |Flat-Open design compartment with Laptop & Tablet sleeve",
+      "price": 4195,
+      "originalPrice": 10799,
+      "discountPercentage": 61,
+      "image": "/uploads/1773037500175_noy1hba38c.png",
+      "images": [],
+      "category": "electronics",
+      "description": "Premium High-Strength Fabric: Crafted from premium, lightweight polyester fabric, this olive backpack offers exceptional durability and water resistance, while the vibrant orange highlights make it extremely easy on the eyes. The easy-to-clean material ensures your backpack remains pristine, no matter where your journey takes you.\nEasy Access: This backpack features a unique fold-top opening for maximum storage and a secure strap closure for adjustable volume. A collapsible partition offers direct access to the main compartment from the laptop area offering easy retrieval of items.",
+      "rating": 5,
+      "reviewCount": 75,
+      "seller": "Safari",
+      "inStock": true,
+      "tags": [
+        {
+          "type": "best-seller",
+          "label": "Best Seller"
+        }
+      ],
+      "link": "/product/p_1773037517521_e0br22ttw",
+      "id": "p_1773037517521_e0br22ttw"
     }
   ]
 }
