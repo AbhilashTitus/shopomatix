@@ -67,6 +67,41 @@ const Providers = dynamic(() => import('@/components/Providers').then(mod => ({ 
   )
 })
 
+const isMaintenanceMode = true; // Toggle to true to enable maintenance mode
+
+const MaintenanceScreen = () => (
+  <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
+    <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center space-y-6">
+      <div className="flex justify-center">
+        <img 
+          src="/assets/shopomatix-logo-new.avif" 
+          alt="Shopomatix" 
+          className="h-20 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
+        />
+      </div>
+      <div className="space-y-3">
+        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Under Maintenance</h1>
+        <p className="text-slate-500 font-medium leading-relaxed">
+          We&apos;re upgrading Shopomatix to provide you with a better shopping experience. 
+          Please check back soon!
+        </p>
+      </div>
+      <div className="pt-2">
+        <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-600 rounded-full text-sm font-semibold border border-orange-100">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+          </span>
+          Currently Down for Updates
+        </span>
+      </div>
+      <div className="text-xs text-slate-400 pt-4">
+        &copy; {new Date().getFullYear()} Shopomatix. Professional Marketplace.
+      </div>
+    </div>
+  </div>
+);
+
 export default function RootLayout({
   children,
 }: {
@@ -80,7 +115,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <Providers>
-          {children}
+          {isMaintenanceMode ? <MaintenanceScreen /> : children}
         </Providers>
       </body>
     </html>
