@@ -67,7 +67,7 @@ const Providers = dynamic(() => import('@/components/Providers').then(mod => ({ 
   )
 })
 
-const isMaintenanceMode = true; // Toggle to true to enable maintenance mode
+const isMaintenanceMode = false; // Toggle to true to enable maintenance mode
 
 const MaintenanceScreen = () => (
   <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
